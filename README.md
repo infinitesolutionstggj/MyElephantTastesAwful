@@ -1,4 +1,4 @@
-MyExtacyTastesAwful
+MyElephantTastesAwful
 ===================
 
 TGGJ Project
