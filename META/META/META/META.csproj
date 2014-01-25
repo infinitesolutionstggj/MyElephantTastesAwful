@@ -80,6 +80,7 @@
     <Compile Include="Engine\Collision.cs" />
     <Compile Include="Engine\GameObjects\GameObject.cs" />
     <Compile Include="Engine\GameObjects\GameObjectManager.cs" />
+    <Compile Include="Engine\GameObjects\Player.cs" />
     <Compile Include="Engine\InputManager.cs" />
     <Compile Include="Engine\Sprites\Sprite.cs" />
     <Compile Include="Engine\Sprites\SpriteInstance.cs" />

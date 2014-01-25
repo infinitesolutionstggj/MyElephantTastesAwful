@@ -23,6 +23,7 @@ namespace META.Engine.Sprites
 		{
 			Sprites = new List<Sprite>();
 			Sprites.Add(new Sprite(SpriteID.Black, GetTextures(content, "Blackness", 1), 60));
+            Sprites.Add(new Sprite(SpriteID.Player, GetTextures(content, "Player", 1), 60));
 		}
 
 		public static Sprite GetSprite(SpriteID id)

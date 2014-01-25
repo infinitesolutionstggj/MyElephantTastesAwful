@@ -10,6 +10,7 @@ namespace META.Engine.GameObjects
 {
 	public class GameObject
 	{
+        public Vector2 position;
 		public Rectangle collisionBox;
 		public SpriteInstance sprite;
 		public Rectangle relativeSpriteArea;
@@ -35,6 +36,7 @@ namespace META.Engine.GameObjects
 		public GameObject(Rectangle _collisionBox, SpriteID _sprite, Rectangle? _relativeSpriteArea)
 		{
 			collisionBox = _collisionBox;
+            position = new Vector2(X, Y);
 			sprite = new SpriteInstance(SpriteManager.GetSprite(_sprite));
 			relativeSpriteArea = (_relativeSpriteArea == null ? new Rectangle(0, 0, collisionBox.Width, collisionBox.Height) : (Rectangle)_relativeSpriteArea);
 			active = true;
@@ -44,6 +46,9 @@ namespace META.Engine.GameObjects
 		{
 			if (!active)
 				return;
+
+            X = (int)position.X;
+            Y = (int)position.Y;
 
 			sprite.Update(gameTime);
 		}

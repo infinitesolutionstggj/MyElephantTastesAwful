@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using META.GameWorld.Objects;
+using META.Engine.Sprites;
 
 namespace META.Engine.GameObjects
 {
@@ -21,6 +22,7 @@ namespace META.Engine.GameObjects
 			Objects.Add(new GenericTestObstacle(new Rectangle(200, 100, 100, 25)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(300, 50, 50, 550)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(450, 550, 350, 50)));
+            Objects.Add(new Player(new Rectangle(10, 10, 64, 64) ,SpriteID.Player, null));
 		}
 
 		public static void Update(GameTime gameTime)
