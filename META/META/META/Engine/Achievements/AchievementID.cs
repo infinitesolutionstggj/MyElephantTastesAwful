@@ -9,7 +9,6 @@ namespace META.Engine.Achievements
 	{
 		HelloWorld,				// Started the game
 		GoodbyeCruelWorld,		// Closed the game
-		AbortMission,			// Crashed the game
 		Tautology,				// Collect an achievement
 		AchievementAchieved,	// Collect 10 achievements
 		Yo,						// 20...
@@ -30,12 +29,14 @@ namespace META.Engine.Achievements
 		HeHeHe,					// 69
 		SixtyNinePlusOne,		// 70
 		FourTwenties,			// 80
+		NinetiesKid,			// 90
+		SeriouslyThreeDigits,	// 100
 		PenultimateVictory,		// All but one (this being the last)
 		ParticipationRibbon,	// Pressed start to begin
 		LockedNLoaded,			// Level loaded
-        TheLongHaul,			// Played 1 second
+		TheLongHaul,			// Played 1 second
 		ThisIsGettingExhausting,// Played 30 seconds
-        DoYouHaveNothingBetterToDo,// Played 1 minute
+		DoYouHaveNothingBetterToDo,// Played 1 minute
 		H4rdc0r3G4m3r,		// Played 10 minutes
 		YouShouldGoOutside,		// Played 30 minutes
 		SeriouslyThisCantBeHealthy,// Played 1 hour
@@ -97,7 +98,52 @@ namespace META.Engine.Achievements
 		BoomHeadshot,				// Hit your head
 		DumbItalianPlumberSyndrome,	// Hit your head 10 times
 		Concussed,					// Hit your head 100 times
-		ItsAFeature,				// Find a bug
+		HoorayYouPressedA,
+		HoorayYouPressedB,
+		HoorayYouPressedC,
+		HoorayYouPressedD,
+		HoorayYouPressedE,
+		HoorayYouPressedF,
+		HoorayYouPressedG,
+		HoorayYouPressedH,
+		HoorayYouPressedI,
+		HoorayYouPressedJ,
+		HoorayYouPressedK,
+		HoorayYouPressedL,
+		HoorayYouPressedM,
+		HoorayYouPressedN,
+		HoorayYouPressedO,
+		HoorayYouPressedP,
+		HoorayYouPressedQ,
+		HoorayYouPressedR,
+		HoorayYouPressedS,
+		HoorayYouPressedT,
+		HoorayYouPressedU,
+		HoorayYouPressedV,
+		HoorayYouPressedW,
+		HoorayYouPressedX,
+		HoorayYouPressedY,
+		HoorayYouPressedZ,
+		HoorayYouPressedNumPad0,
+		HoorayYouPressedNumPad1,
+		HoorayYouPressedNumPad2,
+		HoorayYouPressedNumPad3,
+		HoorayYouPressedNumPad4,
+		HoorayYouPressedNumPad5,
+		HoorayYouPressedNumPad6,
+		HoorayYouPressedNumPad7,
+		HoorayYouPressedNumPad8,
+		HoorayYouPressedNumPad9,
+		HoorayYouPressedD0,
+		HoorayYouPressedD1,
+		HoorayYouPressedD2,
+		HoorayYouPressedD3,
+		HoorayYouPressedD4,
+		HoorayYouPressedD5,
+		HoorayYouPressedD6,
+		HoorayYouPressedD7,
+		HoorayYouPressedD8,
+		HoorayYouPressedD9,
 		Count
 	}
 }

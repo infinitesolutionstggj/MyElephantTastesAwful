@@ -41,10 +41,12 @@ namespace META
 			GameObjectManager.Initialize();
 			Camera.Initialize(spriteBatch);
 
+			InputManager.AddCommand("Confirm", Keys.Enter, Buttons.Start);
 			InputManager.AddCommand("Exit", Keys.Escape, Buttons.Back);
 			InputManager.AddCommand("Left", Keys.Left, Buttons.LeftThumbstickLeft);
 			InputManager.AddCommand("Right", Keys.Right, Buttons.LeftThumbstickRight);
-			InputManager.AddCommand("Jump", Keys.Space, Buttons.A);
+			InputManager.AddCommand("Jump", Keys.Up, Buttons.A);
+			InputManager.AddCommand("Pause", Keys.Space, Buttons.Start);
 		}
 
 		protected override void LoadContent()
@@ -67,12 +69,28 @@ namespace META
 			GameObjectManager.Update(gameTime);
 			Camera.Update(gameTime);
 
+			if (InputManager.GetCommandDown("Confirm"))
+				AchievementManager.Unlock(AchievementID.ParticipationRibbon);
+
+			if (InputManager.GetCommand("Pause"))
+			{
+				GameStats.Paused = !GameStats.Paused;
+
+				if (GameStats.Paused)
+					AchievementManager.Unlock(AchievementID.PleaseComeBack);
+				else
+					AchievementManager.Unlock(AchievementID.IMissedYou);
+			}
+
 			GameStats.TotalGameTime = (float)gameTime.TotalGameTime.TotalSeconds;
 			if(!GameStats.Paused)
 				GameStats.TotalLevelTime = (float)gameTime.TotalGameTime.TotalSeconds;
 
 			if (InputManager.GetCommand("Exit"))
+			{
+				AchievementManager.Unlock(AchievementID.GoodbyeCruelWorld);
 				this.Exit();
+			}
 		}
 
 		protected override void Draw(GameTime gameTime)

@@ -31,8 +31,6 @@ namespace META.Engine.Achievements
 			Sets = new List<AchievementSet>()
 				{
 					new AchievementPredicate(AchievementID.HelloWorld, () => true),
-					new AchievementPredicate(AchievementID.GoodbyeCruelWorld, () => false),
-					new AchievementPredicate(AchievementID.AbortMission, () => false),
 					new AchievementFamily(new List<AchievementFamilyRegistration>()
 						{
 							new AchievementFamilyRegistration(AchievementID.Tautology, 1),
@@ -57,7 +55,6 @@ namespace META.Engine.Achievements
 							new AchievementFamilyRegistration(AchievementID.FourTwenties, 80),
 							new AchievementFamilyRegistration(AchievementID.PenultimateVictory, (int)AchievementID.Count - 1),
 						}, () => GameStats.UnlockedAchievements),
-					new AchievementPredicate(AchievementID.ParticipationRibbon, () => false),
 					new AchievementPredicate(AchievementID.LockedNLoaded, () => false),
 					new AchievementFamily(new List<AchievementFamilyRegistration>()
 						{
@@ -91,8 +88,6 @@ namespace META.Engine.Achievements
 					new AchievementPredicate(AchievementID.PCMasterRace, () => InputManager.CurrentKeyState.GetPressedKeys().Count() > 0),
 					new AchievementPredicate(AchievementID.ConsoleFanboy, () => InputManager.CurrentPadState[0] == InputManager.CurrentPadState[3]),
 					new AchievementPredicate(AchievementID.TheButtonsTheyDoNothing, () => Mouse.GetState() != new MouseState()),
-					new AchievementPredicate(AchievementID.PleaseComeBack, () => GameStats.HasBeenPaused),
-					new AchievementPredicate(AchievementID.IMissedYou, () => GameStats.HasBeenPaused && !GameStats.Paused),
 					new AchievementFamily(new List<AchievementFamilyRegistration>()
 						{
 							new AchievementFamilyRegistration(AchievementID.ICanChange, 1),
@@ -157,6 +152,13 @@ namespace META.Engine.Achievements
 							new AchievementFamilyRegistration(AchievementID.Concussed, 100)
 						}, () => GameStats.TotalHeadHits)
 				};
+			for (char c = '0'; c <= '9'; c++)
+			{
+				Sets.Add(AchievementPredicate.KeyPredicate("NumPad" + c.ToString()));
+				Sets.Add(AchievementPredicate.KeyPredicate("D" + c.ToString()));
+			}
+			for (char c = 'A'; c <= 'Z'; c++)
+				Sets.Add(AchievementPredicate.KeyPredicate(c.ToString()));
 		}
 
 		public static void Update(GameTime gameTime)

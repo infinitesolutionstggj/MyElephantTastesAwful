@@ -16,7 +16,6 @@ namespace META.GameWorld
 		public static int TotalJumps = 0;		// TODO
 		public static float LastInputTime = 0;	// TODO
 		public static float TotalAirTime = 0;	// TODO
-		public static bool HasBeenPaused = false; // TODO
 		public static bool Paused = false; // TODO
 		public static float TotalPauseTime = 0; // TODO
 		public static bool Muted = false;

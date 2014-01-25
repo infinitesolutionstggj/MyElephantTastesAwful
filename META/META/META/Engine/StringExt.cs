@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Input;
 
 namespace META.Engine
 {
@@ -19,5 +20,10 @@ namespace META.Engine
                 "$1 $2"
             );
         }
+
+		public static T ToEnum<T>(this string str)
+		{
+			return (T)Enum.Parse(typeof(T), str, true);
+		}
     }
 }
