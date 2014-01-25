@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using META.Engine.GameObjects;
 using META.Engine.Sprites;
+using META.Engine.Achievements;
 
 namespace META.GameWorld.Objects.Characters
 {
@@ -66,12 +67,20 @@ namespace META.GameWorld.Objects.Characters
 					if (yVelocity > 0)
 						yVelocity = 0;
 					isGrounded = true;
+
+					if ((this is Player) && (Right - obstacle.Left <= 1 || obstacle.Right - Left <= 1))
+						AchievementManager.Unlock(AchievementID.LifeOnTheEdge);
 				}
 				else if (rect.Height > 0)	// Character on bottom
 				{
 					Top = obstacle.Bottom;
 					if (yVelocity < 0)
+					{
+						if (this is Player)
+							GameStats.TotalHeadHits++;
+
 						yVelocity = 0;
+					}
 				}
 			}
 			else							// Horizontal Collision

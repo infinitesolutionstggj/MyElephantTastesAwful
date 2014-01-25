@@ -12,13 +12,12 @@ using META.Engine.Achievements;
 using META.Engine.GameObjects;
 using META.Engine.Sprites;
 using META.Engine;
+using META.GameWorld;
 
 namespace META
 {
 	public class Game1 : Microsoft.Xna.Framework.Game
 	{
-		public static float TotalGameTime;
-
 		public static string MostRecentAchievement = "";
 		public SpriteFont font;
 
@@ -68,7 +67,9 @@ namespace META
 			GameObjectManager.Update(gameTime);
 			Camera.Update(gameTime);
 
-			TotalGameTime = (float)gameTime.TotalGameTime.TotalSeconds;
+			GameStats.TotalGameTime = (float)gameTime.TotalGameTime.TotalSeconds;
+			if(!GameStats.Paused)
+				GameStats.TotalLevelTime = (float)gameTime.TotalGameTime.TotalSeconds;
 
 			if (InputManager.GetCommand("Exit"))
 				this.Exit();

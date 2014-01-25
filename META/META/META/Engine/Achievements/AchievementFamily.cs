@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace META.Engine.Achievements
 {
-	public class AchievementFamily
+	public class AchievementFamily : AchievementSet
 	{
 		public LinkedList<AchievementFamilyRegistration> members;
 		public Func<int> currentValue;
@@ -22,13 +22,18 @@ namespace META.Engine.Achievements
 			currentValue = valueFunc;
 		}
 
-		public void Check()
+		public override void Check()
 		{
 			if (currentValue() >= members.First.Value.requirement)
 			{
 				AchievementManager.Unlock(members.First.Value.id);
 				members.RemoveFirst();
 			}
+		}
+
+		public override bool ShouldDie()
+		{
+			return members.Count == 0;
 		}
 	}
 }
