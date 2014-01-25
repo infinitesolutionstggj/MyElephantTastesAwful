@@ -8,11 +8,17 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using META.Engine.Achievements;
 
 namespace META
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+		public static float TotalGameTime;
+
+		public static string MostRecentAchievement = "";
+		public SpriteFont font;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
@@ -23,15 +29,19 @@ namespace META
         }
 
         protected override void Initialize()
-        {
-            // TODO: Add your initialization logic here
+		{
+			base.Initialize();
 
-            base.Initialize();
+			InputManager.Initialize();
+			AchievementManager.Initialize();
+
+			InputManager.AddCommand("Exit", Keys.Escape, Buttons.Back);
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+			font = Content.Load<SpriteFont>("SpriteFont1");
         }
 
         protected override void UnloadContent()
@@ -39,16 +49,25 @@ namespace META
         }
 
         protected override void Update(GameTime gameTime)
-        {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
+		{
+			base.Update(gameTime);
 
-            base.Update(gameTime);
+			InputManager.Update();
+			AchievementManager.Update(gameTime);
+
+			TotalGameTime = (float)gameTime.TotalGameTime.TotalSeconds;
+
+			if (InputManager.GetCommand("Exit"))
+                this.Exit();
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
+			spriteBatch.Begin();
+			spriteBatch.DrawString(font, MostRecentAchievement, new Vector2(10, 10), Color.Purple);
+			spriteBatch.End();
 
             base.Draw(gameTime);
         }
