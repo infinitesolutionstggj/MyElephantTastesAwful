@@ -99,7 +99,7 @@ namespace META
             }
 
 			GameStats.TotalGameTime = (float)gameTime.TotalGameTime.TotalSeconds;
-			if(!GameStats.Paused)
+			if(StateMachineManager.currentState != State.Paused)
 				GameStats.TotalLevelTime = (float)gameTime.TotalGameTime.TotalSeconds;
 
 			if (InputManager.GetCommandDown("CheckCode"))
@@ -134,7 +134,7 @@ namespace META
             {//Pause Game Toggle
                 GameStats.Paused = !GameStats.Paused;
 
-                if (GameStats.Paused)
+                if (StateMachineManager.currentState == State.Paused)
                     AchievementManager.Unlock(AchievementID.PleaseComeBack);
                 else
                     AchievementManager.Unlock(AchievementID.IMissedYou);
@@ -152,7 +152,7 @@ namespace META
 
             if (InputManager.GetCommandDown("Pause"))
             {//Pause Game Toggle
-                GameStats.Paused = !GameStats.Paused;
+                //GameStats.Paused = !GameStats.Paused;
 
                 if (GameStats.Paused)
                     AchievementManager.Unlock(AchievementID.PleaseComeBack);
@@ -192,6 +192,7 @@ namespace META
             switch (StateMachineManager.currentState)
             {//State Machine 
                 case State.MainMenu:
+                    DrawMainMenu(spriteBatch);
                     break;
                 case State.Playing:
                     DrawPlayingState(spriteBatch);
@@ -205,6 +206,10 @@ namespace META
 
 			spriteBatch.End();
 		}
+        protected void DrawMainMenu(SpriteBatch spriteBatch)
+        { 
+        
+        }
         protected void DrawPlayingState(SpriteBatch spriteBatch)
         {
             GameObjectManager.Draw(spriteBatch);
