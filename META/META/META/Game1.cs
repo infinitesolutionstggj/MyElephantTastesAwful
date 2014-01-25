@@ -197,7 +197,7 @@ namespace META
                     DrawPlayingState(spriteBatch);
                     break;
                 case State.Paused:
-                    DrawPausedUI();
+                    DrawPausedUI(spriteBatch);
                     break;
                 case State.AchievementList:
                     break;
@@ -210,10 +210,12 @@ namespace META
             GameObjectManager.Draw(spriteBatch);
             spriteBatch.DrawString(font, MostRecentAchievement, new Vector2(10, 10), Color.Purple);
         }
-        protected void DrawPausedUI()
+        protected void DrawPausedUI(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawStringCentered(font, "Game Paused", new Vector2(GraphicsDevice.Viewport.Width * 0.5f, GraphicsDevice.Viewport.Height * 0.5f), Color.Red);
             spriteBatch.DrawStringCentered(font, "Press Space to Continue", new Vector2(GraphicsDevice.Viewport.Width * 0.5f, GraphicsDevice.Viewport.Height * 0.85f), Color.Red);
+
+            DrawPlayingState(spriteBatch);
         }
 	}
 }
