@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using META.Engine;
 
 namespace META.Engine.Achievements
 {
@@ -20,7 +21,7 @@ namespace META.Engine.Achievements
 				Achievements[i] = new Achievement();
 				Achievements[i].id = (AchievementID)i;
 				Achievements[i].isUnlocked = false;
-				Achievements[i].name = Achievements[i].id.ToString();
+				Achievements[i].name = StringExt.SplitCamelCase(Achievements[i].id.ToString());
 				Achievements[i].description = Achievements[i].name + " Description";
 				Achievements[i].icon = null;
 			}

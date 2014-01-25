@@ -7,8 +7,8 @@ namespace META.Engine.Achievements
 {
 	public enum AchievementID
 	{
-		Played1Second,
-		Played1Minute,
+        Played1Second,
+        Played1Minute,
 		Played1Hour,
 		Played1Day,
 		Count
