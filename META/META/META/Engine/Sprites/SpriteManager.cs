@@ -11,7 +11,9 @@ namespace META.Engine.Sprites
 	public enum SpriteID
 	{
 		Black,
-		Player,
+		PlayerIdle,
+		PlayerWalk,
+		PlayerJump,
 		Crab
 	}
 
@@ -23,7 +25,9 @@ namespace META.Engine.Sprites
 		{
 			Sprites = new List<Sprite>();
 			Sprites.Add(new Sprite(SpriteID.Black, GetTextures(content, "Blackness", 1), 60));
-            Sprites.Add(new Sprite(SpriteID.Player, GetTextures(content, "Player", 1), 60));
+			Sprites.Add(new Sprite(SpriteID.PlayerIdle, GetTextures(content, "PlayerIdle", 1), 60));
+			Sprites.Add(new Sprite(SpriteID.PlayerWalk, GetTextures(content, "PlayerWalk", 1), 60));
+			Sprites.Add(new Sprite(SpriteID.PlayerJump, GetTextures(content, "PlayerJump", 1), 60));
 		}
 
 		public static Sprite GetSprite(SpriteID id)

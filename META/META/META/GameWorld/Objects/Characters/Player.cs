@@ -11,26 +11,55 @@ using META.Engine.Achievements;
 
 namespace META.GameWorld.Objects.Characters
 {
-    class Player : Character
-    {
+	public class Player : Character
+	{
+		public enum Animations
+		{
+			Idle,
+			Walk,
+			Jump,
+			Count
+		}
+
 		public static Player Main;
 
 		public float jumpPower;
 
-        public Player(Vector2 _position)
-            : base(_position, SpriteID.Player, 350)
-        {
+		public Player(Vector2 _position)
+			: base(_position, SpriteID.PlayerIdle, 350)
+		{
 			if (Main != null)
 				GameObjectManager.Objects.Remove(Main);
 			Main = this;
 
+			sprite = new SpriteInstance[(int)Animations.Count];
+			sprite[(int)Animations.Idle] = new SpriteInstance(SpriteManager.GetSprite(SpriteID.PlayerIdle));
+			sprite[(int)Animations.Walk] = new SpriteInstance(SpriteManager.GetSprite(SpriteID.PlayerWalk));
+			sprite[(int)Animations.Jump] = new SpriteInstance(SpriteManager.GetSprite(SpriteID.PlayerJump));
+			_currentAnimation = (int)Animations.Idle;
+
 			jumpPower = 550;
-        }
+		}
 
 		public override void Update(GameTime gameTime)
 		{
+			if (isGrounded || GetCurrentAnimation() != Animations.Jump)
+			{
+				if (GetDirection() != 0)
+				{
+					SetAnimation(Animations.Walk);
+				}
+				else
+				{
+					SetAnimation(Animations.Idle);
+				}
+			}
+
 			if (isGrounded && InputManager.GetCommandDown("Jump"))
+			{
 				yVelocity -= jumpPower;
+				SetAnimation(Animations.Jump);
+			}
 
 			if (position.Y > 600)
 			{
@@ -64,6 +93,7 @@ namespace META.GameWorld.Objects.Characters
 		{
 			position = new Vector2(10, 10);
 			yVelocity = 0;
+			SetAnimation(Animations.Idle);
 			GameStats.TotalLevelTime = 0;
 		}
 
@@ -75,5 +105,28 @@ namespace META.GameWorld.Objects.Characters
 			GameStats.TotalDeaths++;
 			AchievementManager.Unlock(AchievementID.JustLikeNew);
 		}
-    }
+
+		public void SetAnimation(Animations animation)
+		{
+			if (_currentAnimation == (int)animation)
+				return;
+
+			switch (animation)
+			{
+				case Animations.Idle:
+				case Animations.Walk:
+				case Animations.Jump:
+					_currentAnimation = (int)animation;
+					sprite[_currentAnimation].Reset();
+					break;
+				default:
+					break;
+			}
+		}
+
+		public Animations GetCurrentAnimation()
+		{
+			return (Animations)_currentAnimation;
+		}
+	}
 }

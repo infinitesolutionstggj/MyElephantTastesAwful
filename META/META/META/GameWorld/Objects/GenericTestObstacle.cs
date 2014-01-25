@@ -15,7 +15,8 @@ namespace META.GameWorld.Objects
 		{
 			collisionBox = area;
 			relativeSpriteArea = new Rectangle(0, 0, area.Width, area.Height);
-			sprite = new SpriteInstance(SpriteManager.GetSprite(SpriteID.Black));
+			sprite = new SpriteInstance[1];
+			sprite[0] = new SpriteInstance(SpriteManager.GetSprite(SpriteID.Black));
 		}
 	}
 }

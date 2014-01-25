@@ -44,8 +44,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Player00.bmp">
-      <Name>Player00</Name>
+    <Compile Include="PlayerJump00.bmp">
+      <Name>PlayerJump00</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PlayerIdle00.bmp">
+      <Name>PlayerIdle00</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PlayerWalk00.bmp">
+      <Name>PlayerWalk00</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

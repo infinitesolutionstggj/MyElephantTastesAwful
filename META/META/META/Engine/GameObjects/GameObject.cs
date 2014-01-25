@@ -13,9 +13,10 @@ namespace META.Engine.GameObjects
 	{
 		public Vector2 position;
 		public Rectangle collisionBox;
-		public SpriteInstance sprite;
+		public SpriteInstance[] sprite;
 		public Rectangle relativeSpriteArea;
 		public bool active;
+		protected int _currentAnimation;
 
 		public float X { get { return position.X; } set { position.X = value; } }
 		public float Y { get { return position.Y; } set { position.Y = value; } }
@@ -37,8 +38,10 @@ namespace META.Engine.GameObjects
 		public GameObject(Vector2 _position, SpriteID _sprite)
 		{
 			position = _position;
-			sprite = new SpriteInstance(SpriteManager.GetSprite(_sprite));
-			collisionBox = new Rectangle((int)position.X, (int)position.Y, sprite.CurrentFrame.Width, sprite.CurrentFrame.Height);
+			_currentAnimation = 0;
+			sprite = new SpriteInstance[1];
+			sprite[_currentAnimation] = new SpriteInstance(SpriteManager.GetSprite(_sprite));
+			collisionBox = new Rectangle((int)position.X, (int)position.Y, sprite[0].CurrentFrame.Width, sprite[0].CurrentFrame.Height);
 			relativeSpriteArea = new Rectangle(0, 0, collisionBox.Width, collisionBox.Height);
 			active = true;
 		}
@@ -47,7 +50,9 @@ namespace META.Engine.GameObjects
 		{
 			collisionBox = _collisionBox;
 			position = new Vector2(collisionBox.X, collisionBox.Y);
-			sprite = new SpriteInstance(SpriteManager.GetSprite(_sprite));
+			_currentAnimation = 0;
+			sprite = new SpriteInstance[1];
+			sprite[_currentAnimation] = new SpriteInstance(SpriteManager.GetSprite(_sprite));
 			relativeSpriteArea = (_relativeSpriteArea == null ? new Rectangle(0, 0, collisionBox.Width, collisionBox.Height) : (Rectangle)_relativeSpriteArea);
 			active = true;
 		}
@@ -59,7 +64,7 @@ namespace META.Engine.GameObjects
 
 			SyncCollisionBox();
 
-			sprite.Update(gameTime);
+			sprite[_currentAnimation].Update(gameTime);
 		}
 
 		public void SyncCollisionBox()
@@ -76,7 +81,7 @@ namespace META.Engine.GameObjects
 			if (!active)
 				return;
 
-			Camera.Draw(sprite.CurrentFrame, Canvas, Color.White);
+			Camera.Draw(sprite[_currentAnimation].CurrentFrame, Canvas, Color.White);
 		}
 	}
 }
