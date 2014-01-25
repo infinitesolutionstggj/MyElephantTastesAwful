@@ -5,7 +5,9 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 using META.Engine;
+using META.Engine.Sprites;
 using META.GameWorld;
 
 namespace META.Engine.Achievements
@@ -14,9 +16,12 @@ namespace META.Engine.Achievements
 	{
 		public static Achievement[] Achievements;
 		public static List<AchievementSet> Sets;
+		public static Texture2D[] Icons;
 
-		public static void Initialize()
+		public static void Initialize(ContentManager content)
 		{
+			//Icons = SpriteManager.GetTextures(content, "Achievement", (int)AchievementID.Count, 3);
+
 			Achievements = new Achievement[(int)AchievementID.Count];
 			for (int i = 0; i < (int)AchievementID.Count; i++)
 			{
@@ -87,7 +92,7 @@ namespace META.Engine.Achievements
 						}, () => (int)(GameStats.TotalGameTime - GameStats.LastInputTime)),
 					new AchievementPredicate(AchievementID.PCMasterRace, () => InputManager.CurrentKeyState.GetPressedKeys().Count() > 0),
 					new AchievementPredicate(AchievementID.ConsoleFanboy, () => InputManager.CurrentPadState[0] == InputManager.CurrentPadState[3]),
-					new AchievementPredicate(AchievementID.TheButtonsTheyDoNothing, () => Mouse.GetState() != new MouseState()),
+					new AchievementPredicate(AchievementID.TheButtonsTheyDoNothing, () => Mouse.GetState().LeftButton == ButtonState.Pressed || Mouse.GetState().MiddleButton == ButtonState.Pressed || Mouse.GetState().RightButton == ButtonState.Pressed),
 					new AchievementFamily(new List<AchievementFamilyRegistration>()
 						{
 							new AchievementFamilyRegistration(AchievementID.ICanChange, 1),

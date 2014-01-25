@@ -37,7 +37,7 @@ namespace META
 			base.Initialize();
 
 			InputManager.Initialize();
-			AchievementManager.Initialize();
+			AchievementManager.Initialize(Content);
 			GameObjectManager.Initialize();
 			Camera.Initialize(spriteBatch);
 
@@ -47,6 +47,19 @@ namespace META
 			InputManager.AddCommand("Right", Keys.Right, Buttons.LeftThumbstickRight);
 			InputManager.AddCommand("Jump", Keys.Up, Buttons.A);
 			InputManager.AddCommand("Pause", Keys.Space, Buttons.Start);
+
+			InputManager.AddCommand("CheckCode", Keys.Up, Buttons.DPadUp);
+			InputManager.AddCommand("CheckCode", Keys.Down, Buttons.DPadDown);
+			InputManager.AddCommand("CheckCode", Keys.Left, Buttons.DPadLeft);
+			InputManager.AddCommand("CheckCode", Keys.Right, Buttons.DPadRight);
+			InputManager.AddCommand("CheckCode", Keys.B, Buttons.B);
+			InputManager.AddCommand("CheckCode", Keys.A, Buttons.A);
+			InputManager.AddCommand("CodeUp", Keys.Up, Buttons.DPadUp);
+			InputManager.AddCommand("CodeDown", Keys.Down, Buttons.DPadDown);
+			InputManager.AddCommand("CodeLeft", Keys.Left, Buttons.DPadLeft);
+			InputManager.AddCommand("CodeRight", Keys.Right, Buttons.DPadRight);
+			InputManager.AddCommand("CodeB", Keys.B, Buttons.B);
+			InputManager.AddCommand("CodeA", Keys.A, Buttons.A);
 		}
 
 		protected override void LoadContent()
@@ -85,6 +98,33 @@ namespace META
 			GameStats.TotalGameTime = (float)gameTime.TotalGameTime.TotalSeconds;
 			if(!GameStats.Paused)
 				GameStats.TotalLevelTime = (float)gameTime.TotalGameTime.TotalSeconds;
+
+			GameStats.FistsAndElbowsTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+			if (GameStats.FistsAndElbowsTimer >= 1)
+			{
+				GameStats.FistsAndElbowsTimer -= 1;
+				GameStats.FistsAndElbowsCount = 0;
+			}
+			if (InputManager.GetCommandDown("Left") || InputManager.GetCommandDown("Right"))
+			{
+				if (++GameStats.FistsAndElbowsCount >= 10)
+					AchievementManager.Unlock(AchievementID.FistsAndElbows);
+			}
+
+			if (InputManager.GetCommandDown("CheckCode"))
+			{
+				if (InputManager.GetCommandDown(GameStats.Code[GameStats.CodeIndex]))
+				{
+					GameStats.CodeIndex++;
+					if (GameStats.CodeIndex >= GameStats.Code.Length)
+					{
+						AchievementManager.Unlock(AchievementID.SuperNiceTry);
+						GameStats.CodeIndex = 0;
+					}
+				}
+				else
+					GameStats.CodeIndex = 0;
+			}
 
 			if (InputManager.GetCommand("Exit"))
 			{

@@ -34,11 +34,15 @@ namespace META.Engine.Sprites
 			return null;
 		}
 
-		public static Texture2D[] GetTextures(ContentManager content, string baseName, int frames)
+		public static Texture2D[] GetTextures(ContentManager content, string baseName, int frames, int numDigits = 2)
 		{
+			string format = "";
+			for (int i = 0; i < numDigits; i++)
+				format += "0";
+
 			Texture2D[] output = new Texture2D[frames];
 			for (int i = 0; i < frames; i++)
-				output[i] = content.Load<Texture2D>(baseName + i.ToString("00"));
+				output[i] = content.Load<Texture2D>(baseName + i.ToString(format));
 			return output;
 		}
 	}

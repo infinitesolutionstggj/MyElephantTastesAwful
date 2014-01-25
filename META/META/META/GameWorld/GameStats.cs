@@ -25,5 +25,22 @@ namespace META.GameWorld
 		public static int TotalSpikes = 0; // TODO
 		public static int TotalCompletes = 0; // TODO
 		public static int TotalHeadHits = 0;
+		public static float FistsAndElbowsTimer = 0;
+		public static int FistsAndElbowsCount = 0;
+
+		public static int CodeIndex = 0;
+		public static string[] Code = new string[]
+			{
+				"CodeUp",
+				"CodeUp",
+				"CodeDown",
+				"CodeDown",
+				"CodeLeft",
+				"CodeRight",
+				"CodeLeft",
+				"CodeRight",
+				"CodeB",
+				"CodeA"
+			};
 	}
 }
