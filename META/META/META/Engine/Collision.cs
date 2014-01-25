@@ -20,7 +20,7 @@ namespace META
 			width = right - left;
 			height = bottom - top;
 
-			if (width <= 0 || height <= 0)
+			if (width < 0 || height < 0)
 				return null;
 
 			return new Rectangle(left, top, width, height);

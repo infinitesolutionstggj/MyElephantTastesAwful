@@ -4,26 +4,27 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using META.Engine;
 using META.Engine.Sprites;
 
 namespace META.Engine.GameObjects
 {
 	public class GameObject
 	{
-        public Vector2 position;
+		public Vector2 position;
 		public Rectangle collisionBox;
 		public SpriteInstance sprite;
 		public Rectangle relativeSpriteArea;
 		public bool active;
 
-		public int X { get { return collisionBox.X; } set { collisionBox.X = value; } }
-		public int Y { get { return collisionBox.Y; } set { collisionBox.Y = value; } }
-		public int Left { get { return collisionBox.Left; } }
-		public int Top { get { return collisionBox.Top; } }
-		public int Right { get { return collisionBox.Right; } }
-		public int Bottom { get { return collisionBox.Bottom; } }
-		public int Width { get { return collisionBox.Width; } }
-		public int Height { get { return collisionBox.Height; } }
+		public float X { get { return position.X; } set { position.X = value; } }
+		public float Y { get { return position.Y; } set { position.Y = value; } }
+		public float Left { get { return position.X; } set { position.X = value; } }
+		public float Top { get { return position.Y; } set { position.Y = value; } }
+		public float Right { get { return position.X + Width; } set { position.X = value - Width; } }
+		public float Bottom { get { return position.Y + Height; } set { position.Y = value - Height; } }
+		public int Width { get { return collisionBox.Width; } set { collisionBox.Width = value; } }
+		public int Height { get { return collisionBox.Height; } set { collisionBox.Height = value; } }
 
 		public Rectangle Canvas
 		{
@@ -33,10 +34,19 @@ namespace META.Engine.GameObjects
 			}
 		}
 
-		public GameObject(Rectangle _collisionBox, SpriteID _sprite, Rectangle? _relativeSpriteArea)
+		public GameObject(Vector2 _position, SpriteID _sprite)
+		{
+			position = _position;
+			sprite = new SpriteInstance(SpriteManager.GetSprite(_sprite));
+			collisionBox = new Rectangle((int)position.X, (int)position.Y, sprite.CurrentFrame.Width, sprite.CurrentFrame.Height);
+			relativeSpriteArea = new Rectangle(0, 0, collisionBox.Width, collisionBox.Height);
+			active = true;
+		}
+
+		public GameObject(Rectangle _collisionBox, SpriteID _sprite, Rectangle? _relativeSpriteArea = null)
 		{
 			collisionBox = _collisionBox;
-            position = new Vector2(X, Y);
+			position = new Vector2(collisionBox.X, collisionBox.Y);
 			sprite = new SpriteInstance(SpriteManager.GetSprite(_sprite));
 			relativeSpriteArea = (_relativeSpriteArea == null ? new Rectangle(0, 0, collisionBox.Width, collisionBox.Height) : (Rectangle)_relativeSpriteArea);
 			active = true;
@@ -47,10 +57,18 @@ namespace META.Engine.GameObjects
 			if (!active)
 				return;
 
-            X = (int)position.X;
-            Y = (int)position.Y;
+			SyncCollisionBox();
 
 			sprite.Update(gameTime);
+		}
+
+		public void SyncCollisionBox()
+		{
+			if (!active)
+				return;
+
+			collisionBox.X = (int)position.X;
+			collisionBox.Y = (int)position.Y;
 		}
 
 		public void Draw(SpriteBatch spriteBatch)
@@ -58,7 +76,7 @@ namespace META.Engine.GameObjects
 			if (!active)
 				return;
 
-			spriteBatch.Draw(sprite.CurrentFrame, Canvas, Color.White);
+			Camera.Draw(sprite.CurrentFrame, Canvas, Color.White);
 		}
 	}
 }

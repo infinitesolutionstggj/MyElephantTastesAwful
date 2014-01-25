@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Media;
 using META.Engine.Achievements;
 using META.Engine.GameObjects;
 using META.Engine.Sprites;
+using META.Engine;
 
 namespace META
 {
@@ -39,8 +40,12 @@ namespace META
 			InputManager.Initialize();
 			AchievementManager.Initialize();
 			GameObjectManager.Initialize();
+			Camera.Initialize(spriteBatch);
 
 			InputManager.AddCommand("Exit", Keys.Escape, Buttons.Back);
+			InputManager.AddCommand("Left", Keys.Left, Buttons.LeftThumbstickLeft);
+			InputManager.AddCommand("Right", Keys.Right, Buttons.LeftThumbstickRight);
+			InputManager.AddCommand("Jump", Keys.Space, Buttons.A);
 		}
 
 		protected override void LoadContent()
@@ -61,6 +66,7 @@ namespace META
 			InputManager.Update();
 			AchievementManager.Update(gameTime);
 			GameObjectManager.Update(gameTime);
+			Camera.Update(gameTime);
 
 			TotalGameTime = (float)gameTime.TotalGameTime.TotalSeconds;
 
