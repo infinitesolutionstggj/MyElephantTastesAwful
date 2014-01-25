@@ -61,7 +61,7 @@ namespace META.GameWorld.Objects.Characters
 				SetAnimation(Animations.Jump);
 			}
 
-			if (position.Y > 600)
+			if (position.Y > 1080)
 			{
 				GameStats.TotalPitFalls++;
 				Kill();
