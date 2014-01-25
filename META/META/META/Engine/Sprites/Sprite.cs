@@ -13,5 +13,12 @@ namespace META.Engine.Sprites
 		public SpriteID id;
 		public Texture2D[] frames;
 		public float frameRate;
+
+		public Sprite(SpriteID _id, Texture2D[] _frames, float _frameRate)
+		{
+			id = _id;
+			frames = _frames;
+			frameRate = _frameRate;
+		}
 	}
 }

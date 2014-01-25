@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using META.GameWorld.Objects;
 
-namespace META
+namespace META.Engine.GameObjects
 {
 	public static class GameObjectManager
 	{
@@ -14,6 +15,12 @@ namespace META
 		public static void Initialize()
 		{
 			Objects = new List<GameObject>();
+			Objects.Add(new GenericTestObstacle(new Rectangle(0, 550, 300, 50)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(200, 400, 100, 25)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(100, 250, 100, 25)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(200, 100, 100, 25)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(300, 50, 50, 550)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(450, 550, 350, 50)));
 		}
 
 		public static void Update(GameTime gameTime)

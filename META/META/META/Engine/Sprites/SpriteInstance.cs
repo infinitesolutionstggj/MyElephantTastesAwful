@@ -16,6 +16,13 @@ namespace META.Engine.Sprites
 
 		public Texture2D CurrentFrame { get { return sprite.frames[currentFrameIndex]; } }
 
+		public SpriteInstance(Sprite _sprite)
+		{
+			sprite = _sprite;
+			currentFrameIndex = 0;
+			elapsedFrameTime = 0;
+		}
+
 		public void Update(GameTime gameTime)
 		{
 			elapsedFrameTime += (float)gameTime.ElapsedGameTime.TotalSeconds;

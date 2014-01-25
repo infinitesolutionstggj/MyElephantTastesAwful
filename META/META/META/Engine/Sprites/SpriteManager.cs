@@ -10,6 +10,7 @@ namespace META.Engine.Sprites
 {
 	public enum SpriteID
 	{
+		Black,
 		Player,
 		Crab
 	}
@@ -18,9 +19,10 @@ namespace META.Engine.Sprites
 	{
 		public static List<Sprite> Sprites;
 
-		public static void LoadContent()
+		public static void LoadContent(ContentManager content)
 		{
-			// LOAD THE GODDAMN SPRITES GODDAMMIT
+			Sprites = new List<Sprite>();
+			Sprites.Add(new Sprite(SpriteID.Black, GetTextures(content, "Blackness", 1), 60));
 		}
 
 		public static Sprite GetSprite(SpriteID id)
@@ -29,6 +31,14 @@ namespace META.Engine.Sprites
 				if (s.id == id)
 					return s;
 			return null;
+		}
+
+		public static Texture2D[] GetTextures(ContentManager content, string baseName, int frames)
+		{
+			Texture2D[] output = new Texture2D[frames];
+			for (int i = 0; i < frames; i++)
+				output[i] = content.Load<Texture2D>(baseName + i.ToString("00"));
+			return output;
 		}
 	}
 }

@@ -6,12 +6,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using META.Engine.Sprites;
 
-namespace META
+namespace META.Engine.GameObjects
 {
 	public class GameObject
 	{
 		public Rectangle collisionBox;
 		public SpriteInstance sprite;
+		public Rectangle relativeSpriteArea;
 		public bool active;
 
 		public int X { get { return collisionBox.X; } set { collisionBox.X = value; } }
@@ -23,10 +24,19 @@ namespace META
 		public int Width { get { return collisionBox.Width; } }
 		public int Height { get { return collisionBox.Height; } }
 
-		public GameObject(Rectangle _collisionBox, SpriteInstance _sprite)
+		public Rectangle Canvas
+		{
+			get
+			{
+				return new Rectangle(collisionBox.X + relativeSpriteArea.X, collisionBox.Y + relativeSpriteArea.Y, relativeSpriteArea.Width, relativeSpriteArea.Height);
+			}
+		}
+
+		public GameObject(Rectangle _collisionBox, SpriteID _sprite, Rectangle? _relativeSpriteArea)
 		{
 			collisionBox = _collisionBox;
-			sprite = _sprite;
+			sprite = new SpriteInstance(SpriteManager.GetSprite(_sprite));
+			relativeSpriteArea = (_relativeSpriteArea == null ? new Rectangle(0, 0, collisionBox.Width, collisionBox.Height) : (Rectangle)_relativeSpriteArea);
 			active = true;
 		}
 
@@ -43,7 +53,7 @@ namespace META
 			if (!active)
 				return;
 
-			spriteBatch.Draw(sprite.CurrentFrame, collisionBox, Color.White);
+			spriteBatch.Draw(sprite.CurrentFrame, Canvas, Color.White);
 		}
 	}
 }
