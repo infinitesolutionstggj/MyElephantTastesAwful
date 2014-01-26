@@ -8,6 +8,7 @@ Content\BG\Background_01.xnb
 Content\BG\Background_02.xnb
 Content\BG\Background_03.xnb
 Content\BG\Background_04.xnb
+Content\AchievementBG00.xnb
 Content\Achievements\TJ14_Achievements000.xnb
 Content\Achievements\TJ14_Achievements001.xnb
 Content\Achievements\TJ14_Achievements002.xnb
@@ -160,6 +161,11 @@ Content\Player\Idle\MainCharacter_Idle11.xnb
 Content\Player\Idle\MainCharacter_Idle12.xnb
 Content\Player\Idle\MainCharacter_Idle13.xnb
 Content\Player\Idle\MainCharacter_Idle14.xnb
+Content\Player\Jump\MainCharacter_Jump00.xnb
+Content\Player\Jump\MainCharacter_Jump01.xnb
+Content\Player\Jump\MainCharacter_Jump02.xnb
+Content\Player\Jump\MainCharacter_Jump03.xnb
+Content\Player\Jump\MainCharacter_Jump04.xnb
 Content\Player\Run\MainCharacter_Run00.xnb
 Content\Player\Run\MainCharacter_Run01.xnb
 Content\Player\Run\MainCharacter_Run02.xnb
@@ -168,12 +174,6 @@ Content\Player\Run\MainCharacter_Run04.xnb
 Content\Player\Run\MainCharacter_Run05.xnb
 Content\Player\Run\MainCharacter_Run06.xnb
 Content\Player\Run\MainCharacter_Run07.xnb
-Content\AchievementBG00.xnb
-Content\Player\Jump\MainCharacter_Jump00.xnb
-Content\Player\Jump\MainCharacter_Jump01.xnb
-Content\Player\Jump\MainCharacter_Jump02.xnb
-Content\Player\Jump\MainCharacter_Jump03.xnb
-Content\Player\Jump\MainCharacter_Jump04.xnb
 Content\Player\Jump\MainCharacter_Jump05.xnb
 Content\Clear00.xnb
 Content\menu.xnb
@@ -204,10 +204,17 @@ Content\Sounds\ButterflyKill.xnb
 Content\Sounds\Complete.xnb
 Content\Sounds\CrabDeath.xnb
 Content\Sounds\CrabKill.xnb
+Content\Sounds\Jump.xnb
 Content\Sounds\Land.xnb
 Content\Sounds\Pause.xnb
 Content\Sounds\Pitfall.xnb
 Content\Sounds\SpikeKill.xnb
+<<<<<<< HEAD
+=======
 Content\Sounds\Jump.xnb
 Content\Sounds\Music.xnb
 Content\Sounds\Music.wma
+<<<<<<< HEAD
+=======
+>>>>>>> Music
+>>>>>>> 0268f3c448a9ebffe387332d6d2eaf3e38466265
