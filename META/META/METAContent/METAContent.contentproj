@@ -886,11 +886,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Player\Jump\MainCharacter_Jump05.png">
-      <Name>MainCharacter_Jump05</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Player\Run\MainCharacter_Run00.png">
       <Name>MainCharacter_Run00</Name>
       <Importer>TextureImporter</Importer>
