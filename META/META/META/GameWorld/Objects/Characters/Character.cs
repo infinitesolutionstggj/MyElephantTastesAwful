@@ -84,7 +84,7 @@ namespace META.GameWorld.Objects.Characters
 					if ((this is Player) && (Right - obstacle.Left <= 1 || obstacle.Right - Left <= 1))
 						AchievementManager.Unlock(AchievementID.LifeOnTheEdge);
 				}
-				else if (rect.Height > 0)	// Character on bottom
+				else if (rect.Height > 0 && this is Player)	// Character on bottom
 				{
 					Top = obstacle.Bottom;
 					if (yVelocity < 0)
