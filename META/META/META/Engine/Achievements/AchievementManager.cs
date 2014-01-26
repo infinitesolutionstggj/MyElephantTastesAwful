@@ -149,7 +149,7 @@ namespace META.Engine.Achievements
 							new AchievementFamilyRegistration(AchievementID.Brisk, -120),
 							new AchievementFamilyRegistration(AchievementID.GottaGoFast, -60),
 							new AchievementFamilyRegistration(AchievementID.ArribaArribaAndale, -30)
-						}, () => (int)(GameStats.FastestLevelCompletionTime)),
+						}, () => (int)(-GameStats.FastestLevelCompletionTime)),
 					new AchievementFamily(new List<AchievementFamilyRegistration>()
 						{
 							new AchievementFamilyRegistration(AchievementID.SlowAsMolasses, 60),
