@@ -10,9 +10,7 @@ namespace META
 {
     static class Sound
     {
-        //public static Song Music { get; private set; }
-
-        private static readonly Random rand = new Random();
+		public static Song Music;
 
 		public static SoundEffect AchievementUnlocked;
 		public static SoundEffect LevelComplete;
@@ -30,7 +28,7 @@ namespace META
 
         public static void LoadContent(ContentManager content)
         {
-            //Music = content.Load<Song>("Sound/Music");
+            Music = content.Load<Song>("Sounds/Music");
 
 			AchievementUnlocked = content.Load<SoundEffect>("Sounds/Achievement");
 			LevelComplete = content.Load<SoundEffect>("Sounds/Complete");
