@@ -41,8 +41,11 @@ namespace META.Engine.Achievements
 			if (timeStamp == null)
 				timeStamp = GameStats.TotalGameTime;
 
-			Camera.Draw(Background, new Rectangle((int)Camera.Pan.X, 1080 - Height * index, (int)(Height * ((float)Background.Width / Background.Height)), Height), Color.White);
-			Camera.Draw(achievement.icon, new Rectangle((int)Camera.Pan.X + 10, 1080 - Height * index + 3, (int)((float)Height / Background.Height * achievement.icon.Width), (int)((float)Height / Background.Height * achievement.icon.Height)), Color.White);
+			float scaleRatio = (float)Height / Background.Height;
+
+			Camera.Draw(Background, new Rectangle((int)Camera.Pan.X, 1080 - Height * index, (int)(Background.Width * scaleRatio), Height), Color.White);
+			Camera.Draw(achievement.icon, new Rectangle((int)(Camera.Pan.X + 10 * scaleRatio), (int)(1080 - Height * index + 3 * scaleRatio), (int)(scaleRatio * achievement.icon.Width), Height), Color.White);
+			Camera.DrawString(Font, achievement.name, new Vector2((int)(Camera.Pan.X + scaleRatio * (achievement.icon.Width + 50)), (int)(1080 - Height * index + (scaleRatio * 60))), Color.White);
 		}
 	}
 }
