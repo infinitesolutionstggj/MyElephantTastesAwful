@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Input;
 using META.Engine.Sprites;
 using META.Engine.GameObjects;
 using META.Engine.Achievements;
+using META.Engine.InterfaceSystem;
 
 namespace META.GameWorld.Objects.Characters
 {
@@ -60,12 +61,16 @@ namespace META.GameWorld.Objects.Characters
 				yVelocity -= jumpPower;
 				SetAnimation(Animations.Jump);
 			}
+            if (!isGrounded)
+                GameStats.TotalAirTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
 			if (position.Y > 1080)
 			{
 				GameStats.TotalPitFalls++;
 				Kill();
 			}
+            if (GetCurrentAnimation() == Animations.Idle && StateMachineManager.CurrentState == State.Playing)
+                GameStats.totalIdleTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
 			base.Update(gameTime);
 		}

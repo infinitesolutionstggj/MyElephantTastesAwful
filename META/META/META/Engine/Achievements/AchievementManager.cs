@@ -90,14 +90,14 @@ namespace META.Engine.Achievements
 							new AchievementFamilyRegistration(AchievementID.OnePlayerGame, 30),
 							new AchievementFamilyRegistration(AchievementID.OneIsTheLoneliestNumber, 60),
 							new AchievementFamilyRegistration(AchievementID.AreYouStillThere, 300)
-						}, () => (int)(GameStats.TotalGameTime - GameStats.LastInputTime)),
+						}, () => (int)(GameStats.totalIdleTime)),
 					new AchievementFamily(new List<AchievementFamilyRegistration>()
 						{
 							new AchievementFamilyRegistration(AchievementID.ItsABird, 1),
 							new AchievementFamilyRegistration(AchievementID.ItsAPlane, 30),
 							new AchievementFamilyRegistration(AchievementID.LikeAGazelle, 60),
 							new AchievementFamilyRegistration(AchievementID.PilotingABlimp, 300)
-						}, () => (int)(GameStats.TotalGameTime - GameStats.LastInputTime)),
+						}, () => (int)(GameStats.TotalAirTime)),
 					new AchievementPredicate(AchievementID.PCMasterRace, () => InputManager.CurrentKeyState.GetPressedKeys().Count() > 0),
 					new AchievementPredicate(AchievementID.ConsoleFanboy, () => InputManager.CurrentPadState[0] != InputManager.CurrentPadState[3]),
 					new AchievementPredicate(AchievementID.TheButtonsTheyDoNothing, () => Mouse.GetState().LeftButton == ButtonState.Pressed || Mouse.GetState().MiddleButton == ButtonState.Pressed || Mouse.GetState().RightButton == ButtonState.Pressed),

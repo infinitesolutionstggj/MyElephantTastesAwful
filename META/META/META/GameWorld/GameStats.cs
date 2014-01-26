@@ -14,7 +14,7 @@ namespace META.GameWorld
 		public static float SlowestLevelCompletionTime = 0;
 		public static float DistanceWalked = 0; // TODO
 		public static int TotalJumps = 0;		// TODO
-		public static float LastInputTime = 0;	// TODO
+		public static float totalIdleTime = 0;	// TODO
 		public static float TotalAirTime = 0;	// TODO
 		//public static bool Paused = false; // TODO
 		public static float TotalPauseTime = 0; // TODO

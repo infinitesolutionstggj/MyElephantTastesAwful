@@ -38,9 +38,8 @@ namespace META.Engine
 			}
 				//Pan.X = Player.Main.position.X - SpriteBatch.GraphicsDevice.Viewport.Width * 0.25f;
 
-			Vector2 screenPos2 = WorldToScreenPoint(new Vector2(9600, 0)) - new Vector2(SpriteBatch.GraphicsDevice.Viewport.Width, 0);
-
-			Pan.X = MathHelper.Clamp(Pan.X, 0, (int)ScreenToWorldPoint(screenPos2).X);
+            Vector2 screenPos2 = WorldToScreenPoint(new Vector2(10150, 0)) - new Vector2(SpriteBatch.GraphicsDevice.Viewport.Width, 0);
+            Pan.X = MathHelper.Clamp(Pan.X, 0, (int)ScreenToWorldPoint(screenPos2).X);
 		}
 
 		public static void Draw(Texture2D texture, Rectangle destinationRectangle, Color color, bool flipHorizontally = false)
