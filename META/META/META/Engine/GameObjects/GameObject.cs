@@ -76,7 +76,7 @@ namespace META.Engine.GameObjects
 			collisionBox.Y = (int)position.Y;
 		}
 
-		public void Draw(SpriteBatch spriteBatch)
+		public virtual void Draw(SpriteBatch spriteBatch)
 		{
 			if (!active)
 				return;

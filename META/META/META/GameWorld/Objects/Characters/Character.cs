@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using META.Engine;
 using META.Engine.GameObjects;
 using META.Engine.Sprites;
 using META.Engine.Achievements;
@@ -17,6 +19,7 @@ namespace META.GameWorld.Objects.Characters
 		public float gravity;
 		public float yVelocity;
 		public bool isGrounded;
+		protected int facingDir = 1;
 
 		public Character(Vector2 _position, SpriteID _sprite, float _moveSpeed, float _gravity = DEFAULT_GRAVITY)
 			: base(_position, _sprite)
@@ -39,8 +42,11 @@ namespace META.GameWorld.Objects.Characters
 		public override void Update(GameTime gameTime)
 		{
 			float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+			int direction = GetDirection();
+			if (direction != 0)
+				facingDir = direction;
 
-			position += new Vector2(moveSpeed * GetDirection(), yVelocity) * deltaTime;
+			position += new Vector2(moveSpeed * direction, yVelocity) * deltaTime;
 
 			if (yVelocity != 0)
 				isGrounded = false;
@@ -103,5 +109,15 @@ namespace META.GameWorld.Objects.Characters
 		}
 
 		public abstract int GetDirection();
+
+		public override void Draw(SpriteBatch spriteBatch)
+		{
+			if (!active)
+				return;
+			bool flipDirection = false;
+			if (facingDir == -1)
+				flipDirection = true;
+			Camera.Draw(sprite[_currentAnimation].CurrentFrame, Canvas, Color.White, flipDirection);
+		}
 	}
 }

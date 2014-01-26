@@ -41,10 +41,13 @@ namespace META.Engine
 			Pan.X = (int)MathHelper.Clamp(Pan.X, 0, 9600 - SpriteBatch.GraphicsDevice.Viewport.Width);
 		}
 
-		public static void Draw(Texture2D texture, Rectangle destinationRectangle, Color color)
+		public static void Draw(Texture2D texture, Rectangle destinationRectangle, Color color, bool flipHorizontally = false)
 		{
 			Vector2 screenPos = WorldToScreenPoint(new Vector2(destinationRectangle.X, destinationRectangle.Y));
-			SpriteBatch.Draw(texture, new Rectangle((int)screenPos.X, (int)screenPos.Y, (int)(destinationRectangle.Width * Scale), (int)(destinationRectangle.Height * Scale)), color);
+			if (flipHorizontally)
+				SpriteBatch.Draw(texture, new Rectangle((int)screenPos.X, (int)screenPos.Y, (int)(destinationRectangle.Width * Scale), (int)(destinationRectangle.Height * Scale)), null, color, 0, new Vector2(), SpriteEffects.FlipHorizontally, 0);
+			else
+				SpriteBatch.Draw(texture, new Rectangle((int)screenPos.X, (int)screenPos.Y, (int)(destinationRectangle.Width * Scale), (int)(destinationRectangle.Height * Scale)), color);
 		}
 
 		public static Vector2 WorldToScreenPoint(Vector2 worldPoint)
