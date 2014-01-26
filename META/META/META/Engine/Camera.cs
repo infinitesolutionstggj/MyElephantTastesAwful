@@ -52,7 +52,7 @@ namespace META.Engine
 
 		public static void DrawString(SpriteFont font, string text, Vector2 position, Color color)
 		{
-			SpriteBatch.DrawString(font, text, WorldToScreenPoint(position), color, 0, new Vector2(), Scale, SpriteEffects.None, 0);
+			SpriteBatch.DrawString(font, text, WorldToScreenPoint(position), color, 0, new Vector2(), Scale * new Vector2(1.2f, 1), SpriteEffects.None, 0);
 		}
 
 		public static Vector2 WorldToScreenPoint(Vector2 worldPoint)

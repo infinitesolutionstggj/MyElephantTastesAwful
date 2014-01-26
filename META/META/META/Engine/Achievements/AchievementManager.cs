@@ -31,7 +31,7 @@ namespace META.Engine.Achievements
 				Achievements[i] = new Achievement();
 				Achievements[i].id = (AchievementID)i;
 				Achievements[i].isUnlocked = false;
-				Achievements[i].name = StringExt.SplitCamelCase(Achievements[i].id.ToString());
+				Achievements[i].name = StringExt.SplitCamelCase(Achievements[i].id.ToString()).ToLower();
 
 				// Special cases for oddly Named Achievements
 				if (Achievements[i].id == AchievementID.H4rdc0r3G4m3r)

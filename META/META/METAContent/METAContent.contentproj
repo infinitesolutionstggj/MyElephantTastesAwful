@@ -92,13 +92,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AchievementBG00.png">
-      <Name>AchievementBG00</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Achievements\TJ14_Achievements000.png">
       <Name>TJ14_Achievements000</Name>
       <Importer>TextureImporter</Importer>
@@ -923,6 +916,13 @@
     </Compile>
     <Compile Include="Player\Run\MainCharacter_Run07.png">
       <Name>MainCharacter_Run07</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AchievementBG00.png">
+      <Name>AchievementBG00</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
