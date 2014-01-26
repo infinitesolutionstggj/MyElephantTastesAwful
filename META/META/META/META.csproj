@@ -88,6 +88,8 @@
     <Compile Include="Engine\SpriteBatchExt.cs" />
     <Compile Include="GameWorld\GameStats.cs" />
     <Compile Include="GameWorld\GameEnvironment.cs" />
+    <Compile Include="GameWorld\Objects\Characters\Balloon.cs" />
+    <Compile Include="GameWorld\Objects\Characters\Butterfly.cs" />
     <Compile Include="GameWorld\Objects\Characters\Character.cs" />
     <Compile Include="GameWorld\Objects\Characters\Crab.cs" />
     <Compile Include="GameWorld\Objects\Characters\Player.cs" />

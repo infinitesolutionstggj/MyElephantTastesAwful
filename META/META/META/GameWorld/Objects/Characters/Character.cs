@@ -43,22 +43,22 @@ namespace META.GameWorld.Objects.Characters
 		}
 
 		public override void Update(GameTime gameTime)
-		{
-			float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-			int direction = GetDirection();
-			if (direction != 0)
-				facingDir = direction;
-			Vector2 displacement = new Vector2(moveSpeed * direction, yVelocity) * deltaTime;
-			if (this is Player)
-			{
-				GameStats.DistanceWalked += displacement.Length();
-			}
-			position += displacement;
+        {
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            int direction = GetDirection();
+            if (direction != 0)
+                facingDir = direction;
+            Vector2 displacement = new Vector2(moveSpeed * direction, yVelocity) * deltaTime;
+            if (this is Player)
+            {
+                GameStats.DistanceWalked += displacement.Length();
+            }
+            position += displacement;
 
 			if (yVelocity != 0)
-				isGrounded = false;
+                isGrounded = false;
 
-			yVelocity += gravity * deltaTime;
+            yVelocity += gravity * deltaTime;
 			SyncCollisionBox();
 			ResolveAllCollisions();
 			base.Update(gameTime);

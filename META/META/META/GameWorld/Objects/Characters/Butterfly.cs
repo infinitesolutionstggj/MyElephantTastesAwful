@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using META.Engine;
-using META.Engine.InterfaceSystem;
-using META.Engine.GameObjects;
 using META.Engine.Sprites;
+using META.Engine.InterfaceSystem;
 
 namespace META.GameWorld.Objects.Characters
 {
-    public class Crab : Character
+    public class Butterfly : Character
     {
         public float? lastTurnAroundTime;
         public float turnAroundPeriod;
         public int direction;
 
-        public Crab(Vector2 _position, float _turnAroundPeriod)
-            : base(_position, SpriteID.Crab, 350)
+        public Butterfly(Vector2 _position, float _turnAroundPeriod)
+            : base(_position, SpriteID.Butterfly, 100, 0)
         {
             turnAroundPeriod = _turnAroundPeriod;
             lastTurnAroundTime = null;
@@ -29,8 +26,7 @@ namespace META.GameWorld.Objects.Characters
         {
             base.Update(gameTime);
 
-            if (StateMachineManager.CurrentState == State.Playing &&
-                lastTurnAroundTime == null)
+            if (StateMachineManager.CurrentState == State.Playing && lastTurnAroundTime == null)
                 lastTurnAroundTime = GameStats.TotalGameTime;
 
             while (GameStats.TotalGameTime >= lastTurnAroundTime + turnAroundPeriod &&

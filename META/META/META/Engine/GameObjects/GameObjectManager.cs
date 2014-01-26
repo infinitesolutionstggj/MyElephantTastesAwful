@@ -38,6 +38,8 @@ namespace META.Engine.GameObjects
 			Objects.Add(new GenericTestObstacle(new Rectangle(5451, 457, 1491, 60)));
             Objects.Add(new Player(new Vector2(10, -300)));
             Objects.Add(new Crab(new Vector2(1500, -250), 3.0f));
+            Objects.Add(new Butterfly(new Vector2(1000, 100), 1.5f));
+            Objects.Add(new Balloon(new Vector2(1000, 700)));
 		}
 
 		public static void Update(GameTime gameTime)

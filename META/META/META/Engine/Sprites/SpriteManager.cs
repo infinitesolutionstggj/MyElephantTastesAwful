@@ -15,7 +15,8 @@ namespace META.Engine.Sprites
 		PlayerWalk,
 		PlayerJump,
 		Crab,
-        AchievementBG
+        Butterfly,
+        Balloon
 	}
 
 	public static class SpriteManager
@@ -30,7 +31,9 @@ namespace META.Engine.Sprites
 			Sprites.Add(new Sprite(SpriteID.PlayerWalk, GetTextures(content, "Player/Run/MainCharacter_Run", 8), 15));
 			Sprites.Add(new Sprite(SpriteID.PlayerJump, GetTextures(content, "Player/Jump/MainCharacter_Jump", 6), 10));
             Sprites.Add(new Sprite(SpriteID.PlayerJump, GetTextures(content, "AchievementBG", 1), 60));
-            Sprites.Add(new Sprite(SpriteID.Crab, GetTextures(content, "Player/Idle/MainCharacter_Idle", 15), 15));
+            Sprites.Add(new Sprite(SpriteID.Crab, GetTextures(content, "Crab/Crab", 8), 15));
+            Sprites.Add(new Sprite(SpriteID.Butterfly, GetTextures(content, "Butterfly/Butterfly", 3), 15));
+            Sprites.Add(new Sprite(SpriteID.Balloon, GetTextures(content, "Balloon/Balloon", 8), 15));
 		}
 
 		public static Sprite GetSprite(SpriteID id)
