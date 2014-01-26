@@ -191,12 +191,10 @@ namespace META.Engine.Achievements
 			int i = 0;
 			foreach (AchievementNotification a in CurrentDisplayQueue)
 			{
-				if (i >= AchievementNotification.DISPLAY_COUNT)
+				if (i++ >= AchievementNotification.DISPLAY_COUNT)
 					break;
 
 				a.Draw(i);
-
-				i++;
 			}
 		}
 
