@@ -31,11 +31,11 @@ namespace META.Engine.GameObjects
 			Objects.Add(new GenericTestObstacle(new Rectangle(5282, 1011, 1596, 69)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(7150, 352, 750, 136)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(7900, 400, 116, 110)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(8658, 693, 283, 122)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(8991, 499, 267, 31)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(9402, 342, 148, 16)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(7325, 1016, 1971, 64)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(5351, 457, 1491, 60)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(8858, 639, 400, 75)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(9391, 499, 400, 31)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(9999, 342, 148, 16)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(7325, 1016, 2571, 64)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(5451, 457, 1491, 60)));
             Objects.Add(new Player(new Vector2(5351, 10)));
 		}
 

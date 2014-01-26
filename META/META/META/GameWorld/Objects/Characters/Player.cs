@@ -26,7 +26,7 @@ namespace META.GameWorld.Objects.Characters
 		public float jumpPower;
 
 		public Player(Vector2 _position)
-			: base(_position, SpriteID.PlayerIdle, 350)
+			: base(new Rectangle(10, -300, 100, 220), SpriteID.PlayerIdle, 350, DEFAULT_GRAVITY, new Rectangle(-50, -80, 210, 300))
 		{
 			if (Main != null)
 				GameObjectManager.Objects.Remove(Main);
