@@ -17,6 +17,7 @@ namespace META.Engine.GameObjects
 		public static void Initialize()
 		{
 			Objects = new List<GameObject>();
+			Objects.Add(new Player(new Vector2(10, -300)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(170, 352, 974, 68)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(0, 1006, 1744, 74)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(1894, 800, 398, 280)));
@@ -36,10 +37,8 @@ namespace META.Engine.GameObjects
 			Objects.Add(new GenericTestObstacle(new Rectangle(9999, 342, 148, 16)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(7325, 1016, 2571, 64)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(5451, 457, 1491, 60)));
-            Objects.Add(new Player(new Vector2(10, -300)));
-            Objects.Add(new Crab(new Vector2(1500, -250), 3.0f));
-            Objects.Add(new Butterfly(new Vector2(1000, 100), 1.5f));
-            Objects.Add(new Balloon(new Vector2(1000, 700)));
+
+			//Objects.Add(new )
 		}
 
 		public static void Update(GameTime gameTime)
