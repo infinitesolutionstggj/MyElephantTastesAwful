@@ -161,7 +161,49 @@ namespace META.Engine.Achievements
 							new AchievementFamilyRegistration(AchievementID.BoomHeadshot, 1),
 							new AchievementFamilyRegistration(AchievementID.DumbItalianPlumberSyndrome, 10),
 							new AchievementFamilyRegistration(AchievementID.Concussed, 100)
-						}, () => GameStats.TotalHeadHits)
+						}, () => GameStats.TotalHeadHits),
+					new AchievementFamily(new List<AchievementFamilyRegistration>()
+						{
+							new AchievementFamilyRegistration(AchievementID.Squish, 1),
+							new AchievementFamilyRegistration(AchievementID.BugCollector, 10),
+							new AchievementFamilyRegistration(AchievementID.CatchEmAll, 100)
+						}, () => GameStats.ButterfliesKilled),
+					new AchievementFamily(new List<AchievementFamilyRegistration>()
+						{
+							new AchievementFamilyRegistration(AchievementID.CrabCracker, 1),
+							new AchievementFamilyRegistration(AchievementID.DinnerTime, 10),
+							new AchievementFamilyRegistration(AchievementID.JustWriteButterDip, 100)
+						}, () => GameStats.CrabsKilled),
+					new AchievementFamily(new List<AchievementFamilyRegistration>()
+						{
+							new AchievementFamilyRegistration(AchievementID.HeliumDown, 1),
+							new AchievementFamilyRegistration(AchievementID.NoMoreParties, 10),
+							new AchievementFamilyRegistration(AchievementID.PopGoesYourLife, 100)
+						}, () => GameStats.BalloonsKilled),
+					new AchievementFamily(new List<AchievementFamilyRegistration>()
+						{
+							new AchievementFamilyRegistration(AchievementID.NobodySuspectsTheButterfly, 1),
+							new AchievementFamilyRegistration(AchievementID.WingedDeath, 10),
+							new AchievementFamilyRegistration(AchievementID.FlutteringMassacre, 100)
+						}, () => GameStats.ButterflyDeaths),
+					new AchievementFamily(new List<AchievementFamilyRegistration>()
+						{
+							new AchievementFamilyRegistration(AchievementID.Globophobia, 1),
+							new AchievementFamilyRegistration(AchievementID.Asphixiation, 10),
+							new AchievementFamilyRegistration(AchievementID.TheFaceOfMercy, 100)
+						}, () => GameStats.BalloonDeaths),
+					new AchievementFamily(new List<AchievementFamilyRegistration>()
+						{
+							new AchievementFamilyRegistration(AchievementID.YouGotCrabs, 1),
+							new AchievementFamilyRegistration(AchievementID.PinchyDoom, 10),
+							new AchievementFamilyRegistration(AchievementID.DeathOfAThousandPinches, 100)
+						}, () => GameStats.CrabDeaths),
+					new AchievementFamily(new List<AchievementFamilyRegistration>()
+						{
+							new AchievementFamilyRegistration(AchievementID.Squish, 1),
+							new AchievementFamilyRegistration(AchievementID.BugCollector, 10),
+							new AchievementFamilyRegistration(AchievementID.CatchEmAll, 100)
+						}, () => GameStats.ButterfliesKilled)
 				};
 			for (char c = '0'; c <= '9'; c++)
 			{

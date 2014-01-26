@@ -26,6 +26,12 @@ namespace META.GameWorld
 		public static int TotalHeadHits = 0;
 		public static float FistsAndElbowsTimer = 0;
 		public static int FistsAndElbowsCount = 0;
+		public static int ButterfliesKilled = 0;
+		public static int BalloonsKilled = 0;
+		public static int CrabsKilled = 0;
+		public static int ButterflyDeaths = 0;
+		public static int BalloonDeaths = 0;
+		public static int CrabDeaths = 0;
 
 		public static int CodeIndex = 0;
 		public static string[] Code = new string[]

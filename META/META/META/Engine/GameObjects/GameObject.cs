@@ -11,6 +11,8 @@ namespace META.Engine.GameObjects
 {
 	public class GameObject
 	{
+		public static Texture2D debugTexture;
+
 		public Vector2 position;
 		public Rectangle collisionBox;
 		public SpriteInstance[] sprite;

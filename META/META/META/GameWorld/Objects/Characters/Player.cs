@@ -124,6 +124,13 @@ namespace META.GameWorld.Objects.Characters
 		{
 			Kill();
 
+			if (assailant is LimitedBoundsCrab)
+				GameStats.CrabDeaths++;
+			if (assailant is Balloon)
+				GameStats.BalloonDeaths++;
+			if (assailant is Butterfly)
+				GameStats.ButterflyDeaths++;
+
 			assailant.killSound.PlayIfNotMuted();
 		}
 
@@ -161,7 +168,7 @@ namespace META.GameWorld.Objects.Characters
                 return;
 
             Rectangle rect = (Rectangle)collision;
-            if (rect.Width > rect.Height)	// Vertical Collision
+            if (rect.Width * 2 > rect.Height)	// Vertical Collision
             {
                 if (rect.Y > Y)				// Character on top
                 {
@@ -169,17 +176,19 @@ namespace META.GameWorld.Objects.Characters
                     if (yVelocity > 0)
                     {
                         yVelocity = -jumpPower;
-                        enemy.active = false;
+						enemy.active = false;
+						if (enemy is LimitedBoundsCrab)
+							GameStats.CrabsKilled++;
+						else if (enemy is Balloon)
+							GameStats.BalloonsKilled++;
+						else if (enemy is Butterfly)
+							GameStats.ButterfliesKilled++;
 						enemy.deathSound.PlayIfNotMuted();
                     }
                     else
                     {
                         Kill(enemy);
                     }
-                    isGrounded = true;
-
-                    if ((this is Player) && (Right - enemy.Left <= 1 || enemy.Right - Left <= 1))
-                        AchievementManager.Unlock(AchievementID.LifeOnTheEdge);
                 }
                 else if (rect.Height > 0)	// Character on bottom
                 {

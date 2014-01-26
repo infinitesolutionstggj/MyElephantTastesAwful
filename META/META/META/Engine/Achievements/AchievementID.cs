@@ -144,6 +144,24 @@ namespace META.Engine.Achievements
 		HoorayYouPressedD7,
 		HoorayYouPressedD8,
 		HoorayYouPressedD9,
+		NobodySuspectsTheButterfly,	// 1 death by burterfly
+		WingedDeath,
+		FlutteringMassacre,
+		YouGotCrabs,
+		PinchyDoom,
+		DeathOfAThousandPinches,
+		Globophobia,
+		Asphixiation,
+		TheFaceOfMercy,
+		HeliumDown,
+		NoMoreParties,
+		PopGoesYourLife,
+		CrabCracker,
+		DinnerTime,
+		JustWriteButterDip,
+		Squish,
+		BugCollector,
+		CatchEmAll,
 		Count
 	}
 }

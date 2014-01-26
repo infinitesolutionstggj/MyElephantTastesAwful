@@ -137,6 +137,7 @@ namespace META.GameWorld.Objects.Characters
 			if (facingDir == -1)
 				flipDirection = true;
 			Camera.Draw(sprite[_currentAnimation].CurrentFrame, Canvas, Color.White, flipDirection);
+			//Camera.Draw(debugTexture, collisionBox, new Color(1, 1, 1, 0.25f));
 		}
 	}
 }

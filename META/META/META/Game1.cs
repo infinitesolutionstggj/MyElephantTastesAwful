@@ -32,9 +32,9 @@ namespace META
 		{
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
-			//graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-			//graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-			//graphics.IsFullScreen = true;
+			graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+			graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+			graphics.IsFullScreen = true;
 		}
 
 		protected override void Initialize()
@@ -72,6 +72,7 @@ namespace META
 
 		protected override void LoadContent()
 		{
+			GameObject.debugTexture = Content.Load<Texture2D>("Blackness00");
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 			font = Content.Load<SpriteFont>("SpriteFont1");
 			backgrounds = SpriteManager.GetTextures(Content, "BG/Background_", 5);

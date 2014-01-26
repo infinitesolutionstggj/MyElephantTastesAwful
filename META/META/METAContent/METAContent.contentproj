@@ -1122,6 +1122,98 @@
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Achievements\TJ14_Achievements137.png">
+      <Name>TJ14_Achievements137</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements138.png">
+      <Name>TJ14_Achievements138</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements139.png">
+      <Name>TJ14_Achievements139</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements140.png">
+      <Name>TJ14_Achievements140</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements141.png">
+      <Name>TJ14_Achievements141</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements142.png">
+      <Name>TJ14_Achievements142</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements143.png">
+      <Name>TJ14_Achievements143</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements144.png">
+      <Name>TJ14_Achievements144</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements145.png">
+      <Name>TJ14_Achievements145</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements146.png">
+      <Name>TJ14_Achievements146</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements147.png">
+      <Name>TJ14_Achievements147</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements148.png">
+      <Name>TJ14_Achievements148</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements149.png">
+      <Name>TJ14_Achievements149</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements150.png">
+      <Name>TJ14_Achievements150</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements151.png">
+      <Name>TJ14_Achievements151</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements152.png">
+      <Name>TJ14_Achievements152</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements153.png">
+      <Name>TJ14_Achievements153</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Achievements\TJ14_Achievements154.png">
+      <Name>TJ14_Achievements154</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
