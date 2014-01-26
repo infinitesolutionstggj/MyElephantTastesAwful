@@ -785,6 +785,153 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Player\Idle\MainCharacter_Idle00.png">
+      <Name>MainCharacter_Idle00</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Idle\MainCharacter_Idle01.png">
+      <Name>MainCharacter_Idle01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Idle\MainCharacter_Idle02.png">
+      <Name>MainCharacter_Idle02</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Idle\MainCharacter_Idle03.png">
+      <Name>MainCharacter_Idle03</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Idle\MainCharacter_Idle04.png">
+      <Name>MainCharacter_Idle04</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Idle\MainCharacter_Idle05.png">
+      <Name>MainCharacter_Idle05</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Idle\MainCharacter_Idle06.png">
+      <Name>MainCharacter_Idle06</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Idle\MainCharacter_Idle07.png">
+      <Name>MainCharacter_Idle07</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Idle\MainCharacter_Idle08.png">
+      <Name>MainCharacter_Idle08</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Idle\MainCharacter_Idle09.png">
+      <Name>MainCharacter_Idle09</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Idle\MainCharacter_Idle10.png">
+      <Name>MainCharacter_Idle10</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Idle\MainCharacter_Idle11.png">
+      <Name>MainCharacter_Idle11</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Idle\MainCharacter_Idle12.png">
+      <Name>MainCharacter_Idle12</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Idle\MainCharacter_Idle13.png">
+      <Name>MainCharacter_Idle13</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Idle\MainCharacter_Idle14.png">
+      <Name>MainCharacter_Idle14</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Jump\MainCharacter_Jump00.png">
+      <Name>MainCharacter_Jump00</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Jump\MainCharacter_Jump01.png">
+      <Name>MainCharacter_Jump01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Jump\MainCharacter_Jump02.png">
+      <Name>MainCharacter_Jump02</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Jump\MainCharacter_Jump03.png">
+      <Name>MainCharacter_Jump03</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Jump\MainCharacter_Jump04.png">
+      <Name>MainCharacter_Jump04</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Jump\MainCharacter_Jump05.png">
+      <Name>MainCharacter_Jump05</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Run\MainCharacter_Run00.png">
+      <Name>MainCharacter_Run00</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Run\MainCharacter_Run01.png">
+      <Name>MainCharacter_Run01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Run\MainCharacter_Run02.png">
+      <Name>MainCharacter_Run02</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Run\MainCharacter_Run03.png">
+      <Name>MainCharacter_Run03</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Run\MainCharacter_Run04.png">
+      <Name>MainCharacter_Run04</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Run\MainCharacter_Run05.png">
+      <Name>MainCharacter_Run05</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Run\MainCharacter_Run06.png">
+      <Name>MainCharacter_Run06</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Run\MainCharacter_Run07.png">
+      <Name>MainCharacter_Run07</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

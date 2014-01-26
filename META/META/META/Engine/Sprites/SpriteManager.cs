@@ -26,9 +26,9 @@ namespace META.Engine.Sprites
 		{
 			Sprites = new List<Sprite>();
 			Sprites.Add(new Sprite(SpriteID.Black, GetTextures(content, "Blackness", 1), 60));
-			Sprites.Add(new Sprite(SpriteID.PlayerIdle, GetTextures(content, "PlayerIdle", 1), 60));
-			Sprites.Add(new Sprite(SpriteID.PlayerWalk, GetTextures(content, "PlayerWalk", 1), 60));
-			Sprites.Add(new Sprite(SpriteID.PlayerJump, GetTextures(content, "PlayerJump", 1), 60));
+			Sprites.Add(new Sprite(SpriteID.PlayerIdle, GetTextures(content, "Player/Idle/MainCharacter_Idle", 15), 15));
+			Sprites.Add(new Sprite(SpriteID.PlayerWalk, GetTextures(content, "Player/Run/MainCharacter_Run", 8), 15));
+			Sprites.Add(new Sprite(SpriteID.PlayerJump, GetTextures(content, "Player/Jump/MainCharacter_Jump", 6), 5, false));
             Sprites.Add(new Sprite(SpriteID.PlayerJump, GetTextures(content, "AchievementBG", 1), 60));
 		}
 

@@ -27,6 +27,9 @@ namespace META.Engine.Sprites
 		{
 			elapsedFrameTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+			if (!sprite.Loopable && currentFrameIndex == sprite.frames.Length - 1)
+				return;
+
 			while (elapsedFrameTime >= 1 / sprite.frameRate)
 				NextFrame();
 		}

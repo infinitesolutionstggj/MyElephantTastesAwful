@@ -13,12 +13,14 @@ namespace META.Engine.Sprites
 		public SpriteID id;
 		public Texture2D[] frames;
 		public float frameRate;
+		public bool Loopable { get; protected set; }
 
-		public Sprite(SpriteID _id, Texture2D[] _frames, float _frameRate)
+		public Sprite(SpriteID _id, Texture2D[] _frames, float _frameRate, bool _loopable = true)
 		{
 			id = _id;
 			frames = _frames;
 			frameRate = _frameRate;
+			Loopable = _loopable;
 		}
 	}
 }
