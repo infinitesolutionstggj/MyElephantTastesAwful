@@ -45,8 +45,12 @@ namespace META.GameWorld.Objects.Characters
 			int direction = GetDirection();
 			if (direction != 0)
 				facingDir = direction;
-
-			position += new Vector2(moveSpeed * direction, yVelocity) * deltaTime;
+			Vector2 displacement = new Vector2(moveSpeed * direction, yVelocity) * deltaTime;
+			if (this is Player)
+			{
+				GameStats.DistanceWalked += displacement.Length();
+			}
+			position += displacement;
 
 			if (yVelocity != 0)
 				isGrounded = false;

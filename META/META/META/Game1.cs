@@ -23,6 +23,7 @@ namespace META
 		public static string MostRecentAchievement = "";
 		public SpriteFont font;
 		public Texture2D[] backgrounds;
+		public Texture2D menuBackground;
 
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
@@ -73,6 +74,7 @@ namespace META
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 			font = Content.Load<SpriteFont>("SpriteFont1");
 			backgrounds = SpriteManager.GetTextures(Content, "BG/Background_", 5);
+			menuBackground = Content.Load<Texture2D>("menu");
 			SpriteManager.LoadContent(Content);
 		}
 
@@ -93,7 +95,10 @@ namespace META
 				case State.MainMenu:
 					{
 						if (InputManager.GetCommandDown("Confirm"))//Start Game Achievement
+						{
 							AchievementManager.Unlock(AchievementID.ParticipationRibbon);
+							StateMachineManager.CurrentState = State.Playing;
+						}
 					}
 					break;
 				case State.Playing:
@@ -122,6 +127,7 @@ namespace META
 					break;
 				case State.Paused:
 					{
+						GameStats.TotalPauseTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 						if (InputManager.GetCommandDown("Pause"))
 						{//Pause Game Toggle
 							StateMachineManager.CurrentState = State.Playing;
@@ -173,7 +179,7 @@ namespace META
 			{//State Machine 
 				case State.MainMenu:
 					{
-
+						spriteBatch.Draw(menuBackground, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
 					}
 					break;
 				case State.Playing:

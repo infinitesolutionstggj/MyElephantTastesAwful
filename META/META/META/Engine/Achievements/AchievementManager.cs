@@ -114,11 +114,11 @@ namespace META.Engine.Achievements
 					new AchievementPredicate(AchievementID.Progress, () => StateMachineManager.CurrentState != State.Paused && InputManager.GetCommand("Right")),
 					new AchievementFamily(new List<AchievementFamilyRegistration>()
 						{
-							new AchievementFamilyRegistration(AchievementID.ARegularRichardSimmons, 100),
-							new AchievementFamilyRegistration(AchievementID.ToFallDownAtYourDoor, 500),
-							new AchievementFamilyRegistration(AchievementID.SimplyWalkedIntoMordor, 1000),
-							new AchievementFamilyRegistration(AchievementID.FiveThundred, 5000),
-							new AchievementFamilyRegistration(AchievementID.WhatDoesTheScouterSay, 9001)
+							new AchievementFamilyRegistration(AchievementID.ARegularRichardSimmons, 1000),
+							new AchievementFamilyRegistration(AchievementID.ToFallDownAtYourDoor, 5000),
+							new AchievementFamilyRegistration(AchievementID.SimplyWalkedIntoMordor, 10000),
+							new AchievementFamilyRegistration(AchievementID.FiveThundred, 50000),
+							new AchievementFamilyRegistration(AchievementID.WhatDoesTheScouterSay, 90001)
 						}, () => (int)(GameStats.DistanceWalked)),
 					new AchievementFamily(new List<AchievementFamilyRegistration>()
 						{

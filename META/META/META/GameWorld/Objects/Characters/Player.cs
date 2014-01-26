@@ -58,6 +58,7 @@ namespace META.GameWorld.Objects.Characters
 
 			if (isGrounded && InputManager.GetCommandDown("Jump"))
 			{
+				GameStats.TotalJumps++;
 				yVelocity -= jumpPower;
 				SetAnimation(Animations.Jump);
 			}
@@ -74,7 +75,7 @@ namespace META.GameWorld.Objects.Characters
 
 			if (Collision.PointToRectCollision(GameStats.LevelGoal, this.collisionBox))
 			{
-				Reset();
+				LevelComplete();
 			}
 
 			base.Update(gameTime);
@@ -97,6 +98,7 @@ namespace META.GameWorld.Objects.Characters
 				GameStats.SlowestLevelCompletionTime = GameStats.TotalLevelTime;
 			if (GameStats.TotalLevelTime < GameStats.FastestLevelCompletionTime)
 				GameStats.FastestLevelCompletionTime = GameStats.TotalLevelTime;
+			Reset();
 		}
 
 		public void Reset()

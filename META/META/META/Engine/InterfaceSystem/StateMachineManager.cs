@@ -19,7 +19,7 @@ namespace META.Engine.InterfaceSystem
 
         public static void Initialize()
         {
-            CurrentState = State.Playing;
+            CurrentState = State.MainMenu;
         }
     }
 }
