@@ -25,5 +25,10 @@ namespace META
 
 			return new Rectangle(left, top, width, height);
 		}
+
+		public static bool PointToRectCollision(Vector2 point, Rectangle rect)
+		{
+			return rect.Contains((int)point.X, (int)point.Y);
+		}
 	}
 }

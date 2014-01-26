@@ -45,6 +45,7 @@ namespace META
 			AchievementManager.Initialize(Content);
 			GameObjectManager.Initialize();
 			Camera.Initialize(spriteBatch);
+			GameEnvironment.Initialize();
 
 			InputManager.AddCommand("Confirm", Keys.Enter, Buttons.Start);
 			InputManager.AddCommand("Exit", Keys.Escape, Buttons.Back);
@@ -85,6 +86,7 @@ namespace META
 
 			InputManager.Update();
 			AchievementManager.Update(gameTime);
+			GameEnvironment.Update(gameTime);
 
 			switch (StateMachineManager.CurrentState)
 			{ //State Machine

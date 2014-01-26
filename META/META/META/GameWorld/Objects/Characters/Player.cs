@@ -72,6 +72,11 @@ namespace META.GameWorld.Objects.Characters
             if (GetCurrentAnimation() == Animations.Idle && StateMachineManager.CurrentState == State.Playing)
                 GameStats.totalIdleTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+			if (Collision.PointToRectCollision(GameStats.LevelGoal, this.collisionBox))
+			{
+				Reset();
+			}
+
 			base.Update(gameTime);
 		}
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace META.GameWorld
 {
@@ -42,5 +43,6 @@ namespace META.GameWorld
 				"CodeB",
 				"CodeA"
 			};
+		public static Vector2 LevelGoal = new Vector2(6031, 883);
 	}
 }
