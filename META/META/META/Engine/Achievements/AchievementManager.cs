@@ -16,13 +16,14 @@ namespace META.Engine.Achievements
 	public class AchievementManager
 	{
 		public static Achievement[] Achievements;
+        public static LinkedList<AchievementNotification> CurrentDisplayQueue;
 		public static List<AchievementSet> Sets;
 		public static Texture2D[] Icons;
 
 		public static void Initialize(ContentManager content)
 		{
-			//Icons = SpriteManager.GetTextures(content, "Achievement", (int)AchievementID.Count, 3);
-
+			Icons = SpriteManager.GetTextures(content, "Achievements/TJ14_Achievements", (int)AchievementID.Count, 3);
+            CurrentDisplayQueue = new LinkedList<AchievementNotification>();
 			Achievements = new Achievement[(int)AchievementID.Count];
 			for (int i = 0; i < (int)AchievementID.Count; i++)
 			{
@@ -31,7 +32,7 @@ namespace META.Engine.Achievements
 				Achievements[i].isUnlocked = false;
 				Achievements[i].name = StringExt.SplitCamelCase(Achievements[i].id.ToString());
 				Achievements[i].description = Achievements[i].name + " Description";
-				Achievements[i].icon = null;
+                Achievements[i].icon = Icons[i];
 			}
 
 			Sets = new List<AchievementSet>()
@@ -174,7 +175,24 @@ namespace META.Engine.Achievements
 				s.Check();
 			}
 			Sets.RemoveAll(x => x.ShouldDie());
+
+            while (CurrentDisplayQueue.Count != 0 && CurrentDisplayQueue.First().timeStamp + AchievementNotification.DISPLAY_TIME <= gameTime.TotalGameTime.TotalSeconds)
+                CurrentDisplayQueue.RemoveFirst();
 		}
+
+        public static void Draw()
+        {
+            int i = 0;
+            foreach (AchievementNotification a in CurrentDisplayQueue)
+            {
+                if (i >= AchievementNotification.DISPLAY_COUNT)
+                    break;
+
+                a.Draw(i);
+
+                i++;
+            }
+        }
 
 		public static Achievement GetAchievement(AchievementID id)
 		{
@@ -194,7 +212,8 @@ namespace META.Engine.Achievements
 
 		public static void DisplayUnlock(Achievement a)
 		{
-			Game1.MostRecentAchievement = a.name;
+			//Game1.MostRecentAchievement = a.name;
+            CurrentDisplayQueue.AddLast(new AchievementNotification(a));
 		}
 	}
 }
