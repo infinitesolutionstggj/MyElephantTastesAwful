@@ -108,10 +108,8 @@ namespace META.Engine.Achievements
 							new AchievementFamilyRegistration(AchievementID.RecklessAbandon, 60),
 							new AchievementFamilyRegistration(AchievementID.ThinkerNotADoer, 300)
 						}, () => (int)(GameStats.TotalPauseTime)),
-					new AchievementPredicate(AchievementID.LetMeFocus, () => GameStats.HasBeenMuted),
-					new AchievementPredicate(AchievementID.ItsAMiracle, () => GameStats.HasBeenMuted && !GameStats.Muted),
-					new AchievementPredicate(AchievementID.Backtracking, () => StateMachineManager.CurrentState != State.Paused && InputManager.GetCommand("Left")),
-					new AchievementPredicate(AchievementID.Progress, () => StateMachineManager.CurrentState != State.Paused && InputManager.GetCommand("Right")),
+					new AchievementPredicate(AchievementID.Backtracking, () => StateMachineManager.CurrentState == State.Playing && InputManager.GetCommand("Left")),
+					new AchievementPredicate(AchievementID.Progress, () => StateMachineManager.CurrentState == State.Playing && InputManager.GetCommand("Right")),
 					new AchievementFamily(new List<AchievementFamilyRegistration>()
 						{
 							new AchievementFamilyRegistration(AchievementID.ARegularRichardSimmons, 1000),

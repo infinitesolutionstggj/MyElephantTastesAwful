@@ -18,8 +18,7 @@ namespace META.GameWorld
 		public static float TotalIdleTime = 0;
 		public static float TotalAirTime = 0;
 		public static float TotalPauseTime = 0;
-		public static bool Muted = false;			// TODO
-		public static bool HasBeenMuted = false;	// TODO
+		public static bool Muted = false;
 		public static int TotalDeaths = 0;
 		public static int TotalPitFalls = 0;
 		public static int TotalSpikes = 0;

@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using META.Engine;
 using META.Engine.Sprites;
 using META.Engine.GameObjects;
 using META.Engine.Achievements;
@@ -27,7 +28,7 @@ namespace META.GameWorld.Objects.Characters
 		public float jumpPower;
 
 		public Player(Vector2 _position)
-			: base(new Rectangle((int)_position.X, (int)_position.Y, 100, 220), SpriteID.PlayerIdle, 350, DEFAULT_GRAVITY, new Rectangle(-50, -80, 210, 300))
+			: base(new Rectangle((int)_position.X, (int)_position.Y, 100, 220), SpriteID.PlayerIdle, 500, DEFAULT_GRAVITY, new Rectangle(-50, -80, 210, 300))
 		{
 			if (Main != null)
 				GameObjectManager.Objects.Remove(Main);
@@ -61,6 +62,7 @@ namespace META.GameWorld.Objects.Characters
 				GameStats.TotalJumps++;
 				yVelocity -= jumpPower;
 				SetAnimation(Animations.Jump);
+				Sound.PlayerJump.PlayIfNotMuted();
 			}
             if (!isGrounded)
                 GameStats.TotalAirTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -69,6 +71,7 @@ namespace META.GameWorld.Objects.Characters
 			{
 				GameStats.TotalPitFalls++;
 				Kill();
+				Sound.PlayerFall.PlayIfNotMuted();
 			}
             if (GetCurrentAnimation() == Animations.Idle && StateMachineManager.CurrentState == State.Playing)
                 GameStats.TotalIdleTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -98,23 +101,30 @@ namespace META.GameWorld.Objects.Characters
 				GameStats.SlowestLevelCompletionTime = GameStats.TotalLevelTime;
 			if (GameStats.TotalLevelTime < GameStats.FastestLevelCompletionTime)
 				GameStats.FastestLevelCompletionTime = GameStats.TotalLevelTime;
-			Reset();
+			Sound.LevelComplete.PlayIfNotMuted();
+			GameEnvironment.Reset();
 		}
 
 		public override void Reset()
 		{
             base.Reset();
 			SetAnimation(Animations.Idle);
-			GameStats.TotalLevelTime = 0;
 		}
 
 		public void Kill()
 		{
 			if (position.X < 0)
 				AchievementManager.Unlock(AchievementID.WrongWayDumbass);
-			Reset();
+			GameEnvironment.Reset();
 			GameStats.TotalDeaths++;
 			AchievementManager.Unlock(AchievementID.JustLikeNew);
+		}
+
+		public void Kill(Enemy assailant)
+		{
+			Kill();
+
+			assailant.killSound.PlayIfNotMuted();
 		}
 
 		public void SetAnimation(Animations animation)
@@ -140,9 +150,9 @@ namespace META.GameWorld.Objects.Characters
 			return (Animations)_currentAnimation;
 		}
 
-        public void ResolveEnemyCollision(Character enemy)
+        public void ResolveEnemyCollision(Enemy enemy)
         {
-            if (enemy == this || !enemy.active)
+            if (!enemy.active)
                 return;
 
             Rectangle? collision = Collision.Rect(collisionBox, enemy.collisionBox);
@@ -160,10 +170,11 @@ namespace META.GameWorld.Objects.Characters
                     {
                         yVelocity = -jumpPower;
                         enemy.active = false;
+						enemy.deathSound.PlayIfNotMuted();
                     }
                     else
                     {
-                        Kill();
+                        Kill(enemy);
                     }
                     isGrounded = true;
 
@@ -172,20 +183,20 @@ namespace META.GameWorld.Objects.Characters
                 }
                 else if (rect.Height > 0)	// Character on bottom
                 {
-                    Kill();
+                    Kill(enemy);
                 }
             }
             else							// Horizontal Collision
             {
-                Kill();
+                Kill(enemy);
             }
         }
         public override void ResolveAllCollisions()
         {
             base.ResolveAllCollisions();
 
-            foreach (Character c in GameObjectManager.Objects.OfType<Character>())
-                ResolveEnemyCollision(c);
+            foreach (Enemy e in GameObjectManager.Objects.OfType<Enemy>())
+                ResolveEnemyCollision(e);
         }
 	}
 }

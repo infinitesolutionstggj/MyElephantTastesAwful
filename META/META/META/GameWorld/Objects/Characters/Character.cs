@@ -13,7 +13,7 @@ namespace META.GameWorld.Objects.Characters
 {
 	public abstract class Character : GameObject
 	{
-		public const float DEFAULT_GRAVITY = 1000;
+		public const float DEFAULT_GRAVITY = 2000;
 
         public Vector2 spawnPosition;
 		public float moveSpeed;
@@ -79,7 +79,12 @@ namespace META.GameWorld.Objects.Characters
 					Bottom = obstacle.Top;
 					if (yVelocity > 0)
 						yVelocity = 0;
-					isGrounded = true;
+
+					if (!isGrounded)
+					{
+						Sound.PlayerLand.PlayIfNotMuted();
+						isGrounded = true;
+					}
 
 					if ((this is Player) && (Right - obstacle.Left <= 1 || obstacle.Right - Left <= 1))
 						AchievementManager.Unlock(AchievementID.LifeOnTheEdge);
@@ -121,6 +126,7 @@ namespace META.GameWorld.Objects.Characters
         {
             position = spawnPosition;
             yVelocity = 0;
+			active = true;
         }
 
 		public override void Draw()

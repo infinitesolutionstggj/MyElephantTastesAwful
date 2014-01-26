@@ -54,6 +54,7 @@ namespace META
 			InputManager.AddCommand("Right", Keys.Right, Buttons.LeftThumbstickRight);
 			InputManager.AddCommand("Jump", Keys.Up, Buttons.A);
 			InputManager.AddCommand("Pause", Keys.Space, Buttons.Start);
+			InputManager.AddCommand("Mute", Keys.M, Buttons.Y);
 
 			InputManager.AddCommand("CheckCode", Keys.Up, Buttons.DPadUp);
 			InputManager.AddCommand("CheckCode", Keys.Down, Buttons.DPadDown);
@@ -76,6 +77,7 @@ namespace META
 			backgrounds = SpriteManager.GetTextures(Content, "BG/Background_", 5);
 			menuBackground = Content.Load<Texture2D>("menu");
 			SpriteManager.LoadContent(Content);
+			Sound.LoadContent(Content);
 		}
 
 		protected override void UnloadContent()
@@ -89,6 +91,16 @@ namespace META
 			InputManager.Update();
 			AchievementManager.Update(gameTime);
 			GameEnvironment.Update(gameTime);
+
+			if (InputManager.GetCommandDown("Mute"))
+			{
+				GameStats.Muted = !GameStats.Muted;
+
+				if (GameStats.Muted)
+					AchievementManager.Unlock(AchievementID.LetMeFocus);
+				else
+					AchievementManager.Unlock(AchievementID.ItsAMiracle);
+			}
 
 			switch (StateMachineManager.CurrentState)
 			{ //State Machine
@@ -110,6 +122,7 @@ namespace META
 						{//Pause Game Toggle
 							AchievementManager.Unlock(AchievementID.PleaseComeBack);
 							StateMachineManager.CurrentState = State.Paused;
+							Sound.Pause.PlayIfNotMuted();
 						}
 
 						GameStats.FistsAndElbowsTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -132,6 +145,7 @@ namespace META
 						{//Pause Game Toggle
 							StateMachineManager.CurrentState = State.Playing;
 							AchievementManager.Unlock(AchievementID.IMissedYou);
+							Sound.Pause.PlayIfNotMuted();
 						}
 					}
 					break;

@@ -11,14 +11,14 @@ using META.Engine.Sprites;
 
 namespace META.GameWorld.Objects.Characters
 {
-    public class Crab : Character
+    public class Crab : Enemy
     {
         public float? lastTurnAroundTime;
         public float turnAroundPeriod;
         public int direction;
 
         public Crab(Vector2 _position, float _turnAroundPeriod)
-            : base(_position, SpriteID.Crab, 350)
+            : base(_position, SpriteID.Crab, Sound.CrabKill, Sound.CrabDeath, 350)
         {
             turnAroundPeriod = _turnAroundPeriod;
             lastTurnAroundTime = null;
@@ -40,6 +40,13 @@ namespace META.GameWorld.Objects.Characters
                 lastTurnAroundTime += turnAroundPeriod;
             }
         }
+
+		public override void Reset()
+		{
+			base.Reset();
+			lastTurnAroundTime = GameStats.TotalGameTime;
+			direction = -1;
+		}
 
         public override int GetDirection()
         {

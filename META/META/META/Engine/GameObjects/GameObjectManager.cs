@@ -22,8 +22,8 @@ namespace META.Engine.GameObjects
 			Objects.Add(new GenericTestObstacle(new Rectangle(1894, 800, 398, 280)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(1364, 558, 346, 70)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(1880, 265, 440, 17)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(2648, 380, 86, 700)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(2734, 380, 592, 20)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(2648, 360, 86, 720)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(2734, 360, 592, 20)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(3316, 670, 466, 90)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(3727, 1016, 1057, 64)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(4935, 830, 312, 175)));

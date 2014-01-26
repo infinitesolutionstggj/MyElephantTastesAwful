@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using META.Engine;
+using META.Engine.GameObjects;
 using META.GameWorld.Objects.Characters;
 
 namespace META.GameWorld
@@ -41,9 +42,17 @@ namespace META.GameWorld
 				{
 					Player.Main.Kill();
 					GameStats.TotalSpikes++;
+					Sound.SpikeKill.PlayIfNotMuted();
 					return;
 				}
 			}
+		}
+
+		public static void Reset()
+		{
+			GameStats.TotalLevelTime = 0;
+			foreach (Character c in GameObjectManager.Objects.OfType<Character>())
+				c.Reset();
 		}
 	}
 }

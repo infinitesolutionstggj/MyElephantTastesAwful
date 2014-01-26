@@ -10,28 +10,41 @@ namespace META
 {
     static class Sound
     {
-        public static Song Music { get; private set; }
+        //public static Song Music { get; private set; }
 
         private static readonly Random rand = new Random();
 
-        private static SoundEffect[] explosions;
-        // return a random explosion sound
-        public static SoundEffect Explosion { get { return explosions[rand.Next(explosions.Length)]; } }
+		public static SoundEffect AchievementUnlocked;
+		public static SoundEffect LevelComplete;
+		public static SoundEffect Pause;
+		public static SoundEffect PlayerJump;
+		public static SoundEffect PlayerLand;
+		public static SoundEffect PlayerFall;
+		public static SoundEffect SpikeKill;
+		public static SoundEffect BalloonKill;
+		public static SoundEffect BalloonDeath;
+		public static SoundEffect ButterflyKill;
+		public static SoundEffect ButterflyDeath;
+		public static SoundEffect CrabKill;
+		public static SoundEffect CrabDeath;
 
-        private static SoundEffect[] shots;
-        public static SoundEffect Shot { get { return shots[rand.Next(shots.Length)]; } }
-
-        private static SoundEffect[] spawns;
-        public static SoundEffect Spawn { get { return spawns[rand.Next(spawns.Length)]; } }
-
-        public static void Load(ContentManager content)
+        public static void LoadContent(ContentManager content)
         {
-            Music = content.Load<Song>("Sound/Music");
+            //Music = content.Load<Song>("Sound/Music");
 
-            // These linq expressions are just a fancy way loading all sounds of each category into an array.
-            explosions = Enumerable.Range(1, 8).Select(x => content.Load<SoundEffect>("Sound/explosion-0" + x)).ToArray();
-            shots = Enumerable.Range(1, 4).Select(x => content.Load<SoundEffect>("Sound/shoot-0" + x)).ToArray();
-            spawns = Enumerable.Range(1, 8).Select(x => content.Load<SoundEffect>("Sound/spawn-0" + x)).ToArray();
+			AchievementUnlocked = content.Load<SoundEffect>("Sounds/Achievement");
+			LevelComplete = content.Load<SoundEffect>("Sounds/Complete");
+			Pause = content.Load<SoundEffect>("Sounds/Pause");
+			PlayerJump = content.Load<SoundEffect>("Sounds/Jump");
+			PlayerLand = content.Load<SoundEffect>("Sounds/Land");
+			PlayerFall = content.Load<SoundEffect>("Sounds/Pitfall");
+			SpikeKill = content.Load<SoundEffect>("Sounds/SpikeKill");
+			BalloonKill = content.Load<SoundEffect>("Sounds/BalloonKill");
+			BalloonDeath = content.Load<SoundEffect>("Sounds/BalloonDeath");
+			ButterflyKill = content.Load<SoundEffect>("Sounds/ButterflyKill");
+			ButterflyDeath = content.Load<SoundEffect>("Sounds/ButterflyDeath");
+			CrabKill = content.Load<SoundEffect>("Sounds/CrabKill");
+			CrabDeath = content.Load<SoundEffect>("Sounds/CrabDeath");
         }
     }
 }

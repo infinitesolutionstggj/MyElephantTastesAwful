@@ -39,7 +39,10 @@ namespace META.Engine.Achievements
 		public void Draw(int index)
 		{
 			if (timeStamp == null)
+			{
+				Sound.AchievementUnlocked.PlayIfNotMuted();
 				timeStamp = GameStats.TotalGameTime;
+			}
 
 			float scaleRatio = (float)Height / Background.Height;
 
