@@ -195,11 +195,12 @@ namespace META
 						for (int i = 0; i < backgrounds.Length; i++)
 							Camera.Draw(backgrounds[i], new Rectangle(i * 2048, 0, 2048, 1080), Color.White);
 
-						spriteBatch.DrawStringCentered(font, "Game Paused", new Vector2(GraphicsDevice.Viewport.Width * 0.5f, GraphicsDevice.Viewport.Height * 0.5f), Color.Red);
-						spriteBatch.DrawStringCentered(font, "Press Space to Continue", new Vector2(GraphicsDevice.Viewport.Width * 0.5f, GraphicsDevice.Viewport.Height * 0.85f), Color.Red);
+						spriteBatch.DrawStringCentered(font, "game paused", new Vector2(GraphicsDevice.Viewport.Width * 0.5f, GraphicsDevice.Viewport.Height * 0.5f), Color.Red);
+						spriteBatch.DrawStringCentered(font, "press space to continue", new Vector2(GraphicsDevice.Viewport.Width * 0.5f, GraphicsDevice.Viewport.Height * 0.85f), Color.Red);
 
 						GameObjectManager.Draw();
 						spriteBatch.DrawString(font, MostRecentAchievement, new Vector2(10, 10), Color.Purple);
+						spriteBatch.DrawString(font, String.Format("{0} of {1} achievements unlocked!", GameStats.UnlockedAchievements, (int)AchievementID.Count), new Vector2(10, 30), Color.Red);
 					}
 					break;
 				case State.AchievementList:
