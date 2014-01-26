@@ -35,7 +35,8 @@ namespace META.Engine.GameObjects
 			Objects.Add(new GenericTestObstacle(new Rectangle(8990, 510, 285, 70)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(9417, 328, 148, 82)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(7325, 1016, 1976, 64)));
-            Objects.Add(new Player(new Vector2(10, 10)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(5351, 457, 1491, 60)));
+            Objects.Add(new Player(new Vector2(5351, 10)));
 		}
 
 		public static void Update(GameTime gameTime)
