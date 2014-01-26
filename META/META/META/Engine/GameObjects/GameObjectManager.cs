@@ -17,15 +17,26 @@ namespace META.Engine.GameObjects
 		public static void Initialize()
 		{
 			Objects = new List<GameObject>();
-			Objects.Add(new GenericTestObstacle(new Rectangle(0, 550, 300, 50)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(200, 400, 100, 25)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(100, 250, 100, 25)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(200, 100, 100, 25)));
-			//Objects.Add(new GenericTestObstacle(new Rectangle(300, 50, 50, 550)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(450, 550, 350, 50)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(450, 250, 50, 350)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(500, 400, 50, 250)));
-            Objects.Add(new Player(new Vector2(10, 10)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(170, 352, 974, 68)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(0, 1006, 1744, 74)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(1894, 800, 398, 280)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(1364, 558, 346, 70)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(1880, 265, 440, 17)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(2648, 380, 86, 700)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(2734, 380, 592, 20)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(3316, 670, 466, 90)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(3727, 1016, 1057, 64)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(4935, 830, 312, 175)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(5130, 615, 390, 203)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(5282, 1011, 3996, 69)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(7150, 352, 750, 136)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(7900, 400, 116, 110)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(8636, 640, 314, 180)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(8990, 510, 285, 70)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(9417, 328, 148, 82)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(7325, 1016, 1976, 64)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(5351, 457, 1491, 60)));
+            Objects.Add(new Player(new Vector2(5351, 10)));
 		}
 
 		public static void Update(GameTime gameTime)

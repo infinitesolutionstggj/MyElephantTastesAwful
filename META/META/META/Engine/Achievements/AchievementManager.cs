@@ -31,6 +31,11 @@ namespace META.Engine.Achievements
 				Achievements[i].id = (AchievementID)i;
 				Achievements[i].isUnlocked = false;
 				Achievements[i].name = StringExt.SplitCamelCase(Achievements[i].id.ToString());
+
+				// Special cases for oddly Named Achievements
+				if (Achievements[i].id == AchievementID.H4rdc0r3G4m3r)
+					Achievements[i].name = "H4rdc0r3 G4m3r";
+
 				Achievements[i].description = Achievements[i].name + " Description";
                 Achievements[i].icon = Icons[i];
 			}
