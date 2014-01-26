@@ -10,7 +10,8 @@ namespace META
 {
     static class Sound
     {
-		public static Song Music;
+		public static SoundEffectInstance Music;
+		public static SoundEffect MusicSound;
 
 		public static SoundEffect AchievementUnlocked;
 		public static SoundEffect LevelComplete;
@@ -26,9 +27,31 @@ namespace META
 		public static SoundEffect CrabKill;
 		public static SoundEffect CrabDeath;
 
+		public static void PlayMusic()
+		{
+			Music = MusicSound.CreateInstance();
+			Music.IsLooped = true;
+			Music.Play();
+		}
+
+		public static void PauseMusic()
+		{
+			Music.Pause();
+		}
+
+		public static void ResumeMusic()
+		{
+			Music.Resume();
+		}
+
+		public static void SetMute(bool muted)
+		{
+			Music.Volume = muted ? 0 : 1;
+		}
+
         public static void LoadContent(ContentManager content)
         {
-            Music = content.Load<Song>("Sounds/Music");
+            MusicSound = content.Load<SoundEffect>("Sounds/Music");
 
 			AchievementUnlocked = content.Load<SoundEffect>("Sounds/Achievement");
 			LevelComplete = content.Load<SoundEffect>("Sounds/Complete");

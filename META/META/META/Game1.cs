@@ -68,8 +68,6 @@ namespace META
 			InputManager.AddCommand("CodeRight", Keys.Right, Buttons.DPadRight);
 			InputManager.AddCommand("CodeB", Keys.B, Buttons.B);
 			InputManager.AddCommand("CodeA", Keys.A, Buttons.A);
-
-			MediaPlayer.IsRepeating = true;
 		}
 
 		protected override void LoadContent()
@@ -97,7 +95,7 @@ namespace META
 			if (InputManager.GetCommandDown("Mute"))
 			{
 				GameStats.Muted = !GameStats.Muted;
-				MediaPlayer.IsMuted = GameStats.Muted;
+				Sound.SetMute(GameStats.Muted);
 
 				if (GameStats.Muted)
 					AchievementManager.Unlock(AchievementID.LetMeFocus);
@@ -113,7 +111,7 @@ namespace META
 						{
 							AchievementManager.Unlock(AchievementID.ParticipationRibbon);
 							StateMachineManager.CurrentState = State.Playing;
-							MediaPlayer.Play(Sound.Music);
+							Sound.PlayMusic();
 						}
 					}
 					break;
@@ -126,7 +124,7 @@ namespace META
 						{//Pause Game Toggle
 							AchievementManager.Unlock(AchievementID.PleaseComeBack);
 							StateMachineManager.CurrentState = State.Paused;
-							MediaPlayer.Pause();
+							Sound.PauseMusic();
 							Sound.Pause.PlayIfNotMuted();
 						}
 
@@ -149,7 +147,7 @@ namespace META
 						if (InputManager.GetCommandDown("Pause"))
 						{//Pause Game Toggle
 							StateMachineManager.CurrentState = State.Playing;
-							MediaPlayer.Resume();
+							Sound.ResumeMusic();
 							AchievementManager.Unlock(AchievementID.IMissedYou);
 							Sound.Pause.PlayIfNotMuted();
 						}
