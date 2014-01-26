@@ -91,8 +91,8 @@ namespace META.Engine.Achievements
 							new AchievementFamilyRegistration(AchievementID.LikeAGazelle, 60),
 							new AchievementFamilyRegistration(AchievementID.PilotingABlimp, 300)
 						}, () => (int)(GameStats.TotalGameTime - GameStats.LastInputTime)),
-					new AchievementPredicate(AchievementID.PCMasterRace, () => StateMachineManager.currentState != State.Paused && InputManager.CurrentKeyState.GetPressedKeys().Count() > 0),
-					new AchievementPredicate(AchievementID.ConsoleFanboy, () => StateMachineManager.currentState != State.Paused && InputManager.CurrentPadState[0] == InputManager.CurrentPadState[3]),
+					new AchievementPredicate(AchievementID.PCMasterRace, () => StateMachineManager.CurrentState != State.Paused && InputManager.CurrentKeyState.GetPressedKeys().Count() > 0),
+					new AchievementPredicate(AchievementID.ConsoleFanboy, () => StateMachineManager.CurrentState != State.Paused && InputManager.CurrentPadState[0] == InputManager.CurrentPadState[3]),
 					new AchievementPredicate(AchievementID.TheButtonsTheyDoNothing, () => Mouse.GetState().LeftButton == ButtonState.Pressed || Mouse.GetState().MiddleButton == ButtonState.Pressed || Mouse.GetState().RightButton == ButtonState.Pressed),
 					new AchievementFamily(new List<AchievementFamilyRegistration>()
 						{
@@ -103,8 +103,8 @@ namespace META.Engine.Achievements
 						}, () => (int)(GameStats.TotalPauseTime)),
 					new AchievementPredicate(AchievementID.LetMeFocus, () => GameStats.HasBeenMuted),
 					new AchievementPredicate(AchievementID.ItsAMiracle, () => GameStats.HasBeenMuted && !GameStats.Muted),
-					new AchievementPredicate(AchievementID.Backtracking, () => StateMachineManager.currentState != State.Paused && InputManager.GetCommand("Left")),
-					new AchievementPredicate(AchievementID.Progress, () => StateMachineManager.currentState != State.Paused && InputManager.GetCommand("Right")),
+					new AchievementPredicate(AchievementID.Backtracking, () => StateMachineManager.CurrentState != State.Paused && InputManager.GetCommand("Left")),
+					new AchievementPredicate(AchievementID.Progress, () => StateMachineManager.CurrentState != State.Paused && InputManager.GetCommand("Right")),
 					new AchievementFamily(new List<AchievementFamilyRegistration>()
 						{
 							new AchievementFamilyRegistration(AchievementID.ARegularRichardSimmons, 100),

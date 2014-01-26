@@ -39,7 +39,7 @@ namespace META
 			base.Initialize();
 
 			InputManager.Initialize();
-            StateMachineManager.Initialize();
+			StateMachineManager.Initialize();
 			AchievementManager.Initialize(Content);
 			GameObjectManager.Initialize();
 			Camera.Initialize(spriteBatch);
@@ -83,24 +83,56 @@ namespace META
 			InputManager.Update();
 			AchievementManager.Update(gameTime);
 
-            switch (StateMachineManager.currentState)
-            { //State Machine
-                case State.MainMenu:
-                    UpdateMainMenuState(gameTime);
-                    break;
-                case State.Playing:
-                    UpdatePlayingState(gameTime);
-                    break;
-                case State.Paused:
-                    UpdatePausedState(gameTime);
-                    break;
-                case State.AchievementList:
-                    updateAchievementListState(gameTime);
-                    break;
-            }
+			switch (StateMachineManager.CurrentState)
+			{ //State Machine
+				case State.MainMenu:
+					{
+						if (InputManager.GetCommandDown("Confirm"))//Start Game Achievement
+							AchievementManager.Unlock(AchievementID.ParticipationRibbon);
+					}
+					break;
+				case State.Playing:
+					{
+						GameObjectManager.Update(gameTime);
+						Camera.Update(gameTime);
+
+						if (InputManager.GetCommandDown("Pause"))
+						{//Pause Game Toggle
+							AchievementManager.Unlock(AchievementID.PleaseComeBack);
+							StateMachineManager.CurrentState = State.Paused;
+						}
+
+						GameStats.FistsAndElbowsTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+						if (GameStats.FistsAndElbowsTimer >= 1)
+						{//Fists and Elbows Achievement
+							GameStats.FistsAndElbowsTimer -= 1;
+							GameStats.FistsAndElbowsCount = 0;
+						}
+						if (InputManager.GetCommandDown("Left") || InputManager.GetCommandDown("Right"))
+						{
+							if (++GameStats.FistsAndElbowsCount >= 10)
+								AchievementManager.Unlock(AchievementID.FistsAndElbows);
+						}
+					}
+					break;
+				case State.Paused:
+					{
+						if (InputManager.GetCommandDown("Pause"))
+						{//Pause Game Toggle
+							StateMachineManager.CurrentState = State.Playing;
+							AchievementManager.Unlock(AchievementID.IMissedYou);
+						}
+					}
+					break;
+				case State.AchievementList:
+					{
+
+					}
+					break;
+			}
 
 			GameStats.TotalGameTime = (float)gameTime.TotalGameTime.TotalSeconds;
-			if(StateMachineManager.currentState != State.Paused)
+			if (StateMachineManager.CurrentState != State.Paused)
 				GameStats.TotalLevelTime = (float)gameTime.TotalGameTime.TotalSeconds;
 
 			if (InputManager.GetCommandDown("CheckCode"))
@@ -124,104 +156,43 @@ namespace META
 				this.Exit();
 			}
 		}
-        protected void UpdateMainMenuState(GameTime gameTime)
-        {
-            if (InputManager.GetCommandDown("Confirm"))//Start Game Achievement
-                AchievementManager.Unlock(AchievementID.ParticipationRibbon);
-        }
-        protected void UpdatePausedState(GameTime gameTime)
-        {
-            if (InputManager.GetCommandDown("Pause"))
-            {//Pause Game Toggle
-                GameStats.Paused = !GameStats.Paused;
-
-                if (StateMachineManager.currentState == State.Paused)
-                    AchievementManager.Unlock(AchievementID.PleaseComeBack);
-                else
-                    AchievementManager.Unlock(AchievementID.IMissedYou);
-
-                if (StateMachineManager.currentState != State.Paused)
-                    StateMachineManager.currentState = State.Paused;
-                else
-                    StateMachineManager.currentState = State.UnpauseState;
-            }
-        }
-        protected void UpdatePlayingState(GameTime gameTime)
-        {
-            GameObjectManager.Update(gameTime);
-            Camera.Update(gameTime);
-
-            if (InputManager.GetCommandDown("Pause"))
-            {//Pause Game Toggle
-                //GameStats.Paused = !GameStats.Paused;
-
-                if (GameStats.Paused)
-                    AchievementManager.Unlock(AchievementID.PleaseComeBack);
-                else
-                    AchievementManager.Unlock(AchievementID.IMissedYou);
-
-                if (StateMachineManager.currentState != State.Paused)
-                    StateMachineManager.currentState = State.Paused;
-                else
-                    StateMachineManager.currentState = State.UnpauseState;
-            }
-
-            GameStats.FistsAndElbowsTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (GameStats.FistsAndElbowsTimer >= 1)
-            {//Fists and Elbows Achievement
-                GameStats.FistsAndElbowsTimer -= 1;
-                GameStats.FistsAndElbowsCount = 0;
-            }
-            if (InputManager.GetCommandDown("Left") || InputManager.GetCommandDown("Right"))
-            {
-                if (++GameStats.FistsAndElbowsCount >= 10)
-                    AchievementManager.Unlock(AchievementID.FistsAndElbows);
-            }
-        }
-        protected void updateAchievementListState(GameTime gameTime)
-        {
-        }
 
 		protected override void Draw(GameTime gameTime)
 		{
-            base.Draw(gameTime);
+			base.Draw(gameTime);
 
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 
 			spriteBatch.Begin();
+			switch (StateMachineManager.CurrentState)
+			{//State Machine 
+				case State.MainMenu:
+					{
 
-            switch (StateMachineManager.currentState)
-            {//State Machine 
-                case State.MainMenu:
-                    DrawMainMenu(spriteBatch);
-                    break;
-                case State.Playing:
-                    DrawPlayingState(spriteBatch);
-                    break;
-                case State.Paused:
-                    DrawPausedUI(spriteBatch);
-                    break;
-                case State.AchievementList:
-                    break;
-            }
+					}
+					break;
+				case State.Playing:
+					{
+						GameObjectManager.Draw(spriteBatch);
+						spriteBatch.DrawString(font, MostRecentAchievement, new Vector2(10, 10), Color.Purple);
+					}
+					break;
+				case State.Paused:
+					{
+						spriteBatch.DrawStringCentered(font, "Game Paused", new Vector2(GraphicsDevice.Viewport.Width * 0.5f, GraphicsDevice.Viewport.Height * 0.5f), Color.Red);
+						spriteBatch.DrawStringCentered(font, "Press Space to Continue", new Vector2(GraphicsDevice.Viewport.Width * 0.5f, GraphicsDevice.Viewport.Height * 0.85f), Color.Red);
 
+						GameObjectManager.Draw(spriteBatch);
+						spriteBatch.DrawString(font, MostRecentAchievement, new Vector2(10, 10), Color.Purple);
+					}
+					break;
+				case State.AchievementList:
+					{
+
+					}
+					break;
+			}
 			spriteBatch.End();
 		}
-        protected void DrawMainMenu(SpriteBatch spriteBatch)
-        { 
-        
-        }
-        protected void DrawPlayingState(SpriteBatch spriteBatch)
-        {
-            GameObjectManager.Draw(spriteBatch);
-            spriteBatch.DrawString(font, MostRecentAchievement, new Vector2(10, 10), Color.Purple);
-        }
-        protected void DrawPausedUI(SpriteBatch spriteBatch)
-        {
-            spriteBatch.DrawStringCentered(font, "Game Paused", new Vector2(GraphicsDevice.Viewport.Width * 0.5f, GraphicsDevice.Viewport.Height * 0.5f), Color.Red);
-            spriteBatch.DrawStringCentered(font, "Press Space to Continue", new Vector2(GraphicsDevice.Viewport.Width * 0.5f, GraphicsDevice.Viewport.Height * 0.85f), Color.Red);
-
-            DrawPlayingState(spriteBatch);
-        }
 	}
 }
