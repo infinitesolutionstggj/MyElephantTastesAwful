@@ -15,6 +15,7 @@ namespace META.Engine.Sprites
 		PlayerWalk,
 		PlayerJump,
 		Crab,
+        AchievementBG
 	}
 
 	public static class SpriteManager

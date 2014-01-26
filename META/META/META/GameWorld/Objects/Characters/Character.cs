@@ -110,7 +110,7 @@ namespace META.GameWorld.Objects.Characters
 
 		public abstract int GetDirection();
 
-		public override void Draw(SpriteBatch spriteBatch)
+		public override void Draw()
 		{
 			if (!active)
 				return;

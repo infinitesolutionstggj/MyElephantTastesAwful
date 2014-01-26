@@ -77,15 +77,15 @@
     <Compile Include="Engine\Achievements\AchievementFamilyRegistration.cs" />
     <Compile Include="Engine\Achievements\AchievementID.cs" />
     <Compile Include="Engine\Achievements\AchievementManager.cs" />
+    <Compile Include="Engine\Achievements\AchievementNotification.cs" />
     <Compile Include="Engine\Achievements\AchievementPredicate.cs" />
     <Compile Include="Engine\Achievements\AchievementSet.cs" />
     <Compile Include="Engine\Camera.cs" />
     <Compile Include="Engine\Collision.cs" />
     <Compile Include="Engine\GameObjects\GameObject.cs" />
     <Compile Include="Engine\GameObjects\GameObjectManager.cs" />
-    <Compile Include="Engine\InterfaceSystem\AchievementNotification.cs" />
+    <Compile Include="Engine\InterfaceSystem\AchievementImage.cs" />
     <Compile Include="Engine\InterfaceSystem\StateMachineManager.cs" />
-    <Compile Include="Engine\InterfaceSystem\UIManager.cs" />
     <Compile Include="Engine\SpriteBatchExt.cs" />
     <Compile Include="GameWorld\GameStats.cs" />
     <Compile Include="GameWorld\Objects\Characters\Character.cs" />

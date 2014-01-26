@@ -16,14 +16,15 @@ namespace META.Engine.Achievements
 	public class AchievementManager
 	{
 		public static Achievement[] Achievements;
-        public static LinkedList<AchievementNotification> CurrentDisplayQueue;
+		public static LinkedList<AchievementNotification> CurrentDisplayQueue;
 		public static List<AchievementSet> Sets;
 		public static Texture2D[] Icons;
 
 		public static void Initialize(ContentManager content)
 		{
 			Icons = SpriteManager.GetTextures(content, "Achievements/TJ14_Achievements", (int)AchievementID.Count, 3);
-            CurrentDisplayQueue = new LinkedList<AchievementNotification>();
+			AchievementNotification.Initialize(content);
+			CurrentDisplayQueue = new LinkedList<AchievementNotification>();
 			Achievements = new Achievement[(int)AchievementID.Count];
 			for (int i = 0; i < (int)AchievementID.Count; i++)
 			{
@@ -37,7 +38,7 @@ namespace META.Engine.Achievements
 					Achievements[i].name = "H4rdc0r3 G4m3r";
 
 				Achievements[i].description = Achievements[i].name + " Description";
-                Achievements[i].icon = Icons[i];
+				Achievements[i].icon = Icons[i];
 			}
 
 			Sets = new List<AchievementSet>()
@@ -97,8 +98,8 @@ namespace META.Engine.Achievements
 							new AchievementFamilyRegistration(AchievementID.LikeAGazelle, 60),
 							new AchievementFamilyRegistration(AchievementID.PilotingABlimp, 300)
 						}, () => (int)(GameStats.TotalGameTime - GameStats.LastInputTime)),
-					new AchievementPredicate(AchievementID.PCMasterRace, () => StateMachineManager.CurrentState != State.Paused && InputManager.CurrentKeyState.GetPressedKeys().Count() > 0),
-					new AchievementPredicate(AchievementID.ConsoleFanboy, () => StateMachineManager.CurrentState != State.Paused && InputManager.CurrentPadState[0] == InputManager.CurrentPadState[3]),
+					new AchievementPredicate(AchievementID.PCMasterRace, () => InputManager.CurrentKeyState.GetPressedKeys().Count() > 0),
+					new AchievementPredicate(AchievementID.ConsoleFanboy, () => InputManager.CurrentPadState[0] != InputManager.CurrentPadState[3]),
 					new AchievementPredicate(AchievementID.TheButtonsTheyDoNothing, () => Mouse.GetState().LeftButton == ButtonState.Pressed || Mouse.GetState().MiddleButton == ButtonState.Pressed || Mouse.GetState().RightButton == ButtonState.Pressed),
 					new AchievementFamily(new List<AchievementFamilyRegistration>()
 						{
@@ -181,23 +182,23 @@ namespace META.Engine.Achievements
 			}
 			Sets.RemoveAll(x => x.ShouldDie());
 
-            while (CurrentDisplayQueue.Count != 0 && CurrentDisplayQueue.First().timeStamp + AchievementNotification.DISPLAY_TIME <= gameTime.TotalGameTime.TotalSeconds)
-                CurrentDisplayQueue.RemoveFirst();
+			while (CurrentDisplayQueue.Count != 0 && CurrentDisplayQueue.First().timeStamp != null && CurrentDisplayQueue.First().timeStamp + AchievementNotification.DISPLAY_TIME <= GameStats.TotalGameTime)
+				CurrentDisplayQueue.RemoveFirst();
 		}
 
-        public static void Draw()
-        {
-            int i = 0;
-            foreach (AchievementNotification a in CurrentDisplayQueue)
-            {
-                if (i >= AchievementNotification.DISPLAY_COUNT)
-                    break;
+		public static void Draw()
+		{
+			int i = 0;
+			foreach (AchievementNotification a in CurrentDisplayQueue)
+			{
+				if (i >= AchievementNotification.DISPLAY_COUNT)
+					break;
 
-                a.Draw(i);
+				a.Draw(i);
 
-                i++;
-            }
-        }
+				i++;
+			}
+		}
 
 		public static Achievement GetAchievement(AchievementID id)
 		{
@@ -218,7 +219,7 @@ namespace META.Engine.Achievements
 		public static void DisplayUnlock(Achievement a)
 		{
 			//Game1.MostRecentAchievement = a.name;
-            CurrentDisplayQueue.AddLast(new AchievementNotification(a));
+			CurrentDisplayQueue.AddLast(new AchievementNotification(a));
 		}
 	}
 }
