@@ -50,6 +50,11 @@ namespace META.Engine
 				SpriteBatch.Draw(texture, new Rectangle((int)screenPos.X, (int)screenPos.Y, (int)(destinationRectangle.Width * Scale), (int)(destinationRectangle.Height * Scale)), color);
 		}
 
+		public static void DrawString(SpriteFont font, string text, Vector2 position, Color color)
+		{
+			SpriteBatch.DrawString(font, text, WorldToScreenPoint(position), color, 0, new Vector2(), Scale, SpriteEffects.None, 0);
+		}
+
 		public static Vector2 WorldToScreenPoint(Vector2 worldPoint)
 		{
 			return (worldPoint - Pan) * Scale;

@@ -38,7 +38,7 @@ namespace META.GameWorld.Objects.Characters
 			sprite[(int)Animations.Jump] = new SpriteInstance(SpriteManager.GetSprite(SpriteID.PlayerJump));
 			_currentAnimation = (int)Animations.Idle;
 
-			jumpPower = 550;
+			jumpPower = 900;
 		}
 
 		public override void Update(GameTime gameTime)
