@@ -28,13 +28,13 @@ namespace META.Engine.GameObjects
 			Objects.Add(new GenericTestObstacle(new Rectangle(3727, 1016, 1057, 64)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(4935, 830, 312, 175)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(5130, 615, 390, 203)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(5282, 1011, 3996, 69)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(5282, 1011, 1596, 69)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(7150, 352, 750, 136)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(7900, 400, 116, 110)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(8636, 640, 314, 180)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(8990, 510, 285, 70)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(9417, 328, 148, 82)));
-			Objects.Add(new GenericTestObstacle(new Rectangle(7325, 1016, 1976, 64)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(8658, 693, 283, 122)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(8991, 499, 267, 31)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(9402, 342, 148, 16)));
+			Objects.Add(new GenericTestObstacle(new Rectangle(7325, 1016, 1971, 64)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(5351, 457, 1491, 60)));
             Objects.Add(new Player(new Vector2(5351, 10)));
 		}
