@@ -854,31 +854,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Player\Jump\MainCharacter_Jump00.png">
-      <Name>MainCharacter_Jump00</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Player\Jump\MainCharacter_Jump01.png">
-      <Name>MainCharacter_Jump01</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Player\Jump\MainCharacter_Jump02.png">
-      <Name>MainCharacter_Jump02</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Player\Jump\MainCharacter_Jump03.png">
-      <Name>MainCharacter_Jump03</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Player\Jump\MainCharacter_Jump04.png">
-      <Name>MainCharacter_Jump04</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Player\Run\MainCharacter_Run00.png">
       <Name>MainCharacter_Run00</Name>
       <Importer>TextureImporter</Importer>
@@ -923,6 +898,38 @@
   <ItemGroup>
     <Compile Include="AchievementBG00.png">
       <Name>AchievementBG00</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Player\Jump\MainCharacter_Jump00.png">
+      <Name>MainCharacter_Jump00</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Jump\MainCharacter_Jump01.png">
+      <Name>MainCharacter_Jump01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Jump\MainCharacter_Jump02.png">
+      <Name>MainCharacter_Jump02</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Jump\MainCharacter_Jump03.png">
+      <Name>MainCharacter_Jump03</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Jump\MainCharacter_Jump04.png">
+      <Name>MainCharacter_Jump04</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\Jump\MainCharacter_Jump05.png">
+      <Name>MainCharacter_Jump05</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
