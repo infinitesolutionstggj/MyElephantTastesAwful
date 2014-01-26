@@ -21,6 +21,7 @@ namespace META
 	{
 		public static string MostRecentAchievement = "";
 		public SpriteFont font;
+		public Texture2D[] backgrounds;
 
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
@@ -69,6 +70,7 @@ namespace META
 		{
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 			font = Content.Load<SpriteFont>("SpriteFont1");
+			backgrounds = SpriteManager.GetTextures(Content, "BG/Background_", 5);
 			SpriteManager.LoadContent(Content);
 		}
 
@@ -173,12 +175,17 @@ namespace META
 					break;
 				case State.Playing:
 					{
+						for (int i = 0; i < backgrounds.Length; i++)
+							Camera.Draw(backgrounds[i], new Rectangle(i * 2048, 0, 2048, 1080), Color.White);
 						GameObjectManager.Draw(spriteBatch);
 						spriteBatch.DrawString(font, MostRecentAchievement, new Vector2(10, 10), Color.Purple);
 					}
 					break;
 				case State.Paused:
 					{
+						for (int i = 0; i < backgrounds.Length; i++)
+							Camera.Draw(backgrounds[i], new Rectangle(i * 2048, 0, 2048, 1080), Color.White);
+
 						spriteBatch.DrawStringCentered(font, "Game Paused", new Vector2(GraphicsDevice.Viewport.Width * 0.5f, GraphicsDevice.Viewport.Height * 0.5f), Color.Red);
 						spriteBatch.DrawStringCentered(font, "Press Space to Continue", new Vector2(GraphicsDevice.Viewport.Width * 0.5f, GraphicsDevice.Viewport.Height * 0.85f), Color.Red);
 
