@@ -179,7 +179,7 @@ namespace META
 						for (int i = 0; i < backgrounds.Length; i++)
 							Camera.Draw(backgrounds[i], new Rectangle(i * 2048, 0, 2048, 1080), Color.White);
 						GameObjectManager.Draw();
-						spriteBatch.DrawString(font, Player.Main.position.X.ToString() , new Vector2(10, 10), Color.Purple);
+						//spriteBatch.DrawString(font, Player.Main.position.X.ToString() , new Vector2(10, 10), Color.Purple);
 					}
 					break;
 				case State.Paused:
