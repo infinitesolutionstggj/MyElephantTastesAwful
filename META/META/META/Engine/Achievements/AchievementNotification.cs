@@ -13,7 +13,7 @@ namespace META.Engine.Achievements
 {
 	public class AchievementNotification
 	{
-		public const float DISPLAY_TIME = 5;
+		public const float DISPLAY_TIME = 0.5f;
 		public const int DISPLAY_COUNT = 8;
 
 		public static Texture2D Background;

@@ -15,6 +15,7 @@ namespace META.GameWorld.Objects.Characters
 	{
 		public const float DEFAULT_GRAVITY = 1000;
 
+        public Vector2 spawnPosition;
 		public float moveSpeed;
 		public float gravity;
 		public float yVelocity;
@@ -24,6 +25,7 @@ namespace META.GameWorld.Objects.Characters
 		public Character(Vector2 _position, SpriteID _sprite, float _moveSpeed, float _gravity = DEFAULT_GRAVITY)
 			: base(_position, _sprite)
 		{
+            spawnPosition = _position;
 			moveSpeed = _moveSpeed;
 			gravity = _gravity;
 			yVelocity = 0;
@@ -33,6 +35,7 @@ namespace META.GameWorld.Objects.Characters
 		public Character(Rectangle _collisionBox, SpriteID _sprite, float _moveSpeed, float _gravity = DEFAULT_GRAVITY, Rectangle? _relativeSpriteArea = null)
 			: base(_collisionBox, _sprite, _relativeSpriteArea)
 		{
+            spawnPosition = new Vector2(_collisionBox.X, _collisionBox.Y);
 			moveSpeed = _moveSpeed;
 			gravity = _gravity;
 			yVelocity = 0;
@@ -61,7 +64,7 @@ namespace META.GameWorld.Objects.Characters
 			base.Update(gameTime);
 		}
 
-		public void ResolveCollision(GenericTestObstacle obstacle)
+		public void ResolveTerrainCollision(GenericTestObstacle obstacle)
 		{
 			Rectangle? collision = Collision.Rect(collisionBox, obstacle.collisionBox);
 
@@ -106,13 +109,19 @@ namespace META.GameWorld.Objects.Characters
 			}
 		}
 
-		public void ResolveAllCollisions()
+		public virtual void ResolveAllCollisions()
 		{
 			foreach (var o in GameObjectManager.Objects.OfType<GenericTestObstacle>())
-				ResolveCollision(o);
+				ResolveTerrainCollision(o);
 		}
 
 		public abstract int GetDirection();
+
+        public virtual void Reset()
+        {
+            position = spawnPosition;
+            yVelocity = 0;
+        }
 
 		public override void Draw()
 		{

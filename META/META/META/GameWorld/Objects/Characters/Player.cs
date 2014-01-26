@@ -27,7 +27,7 @@ namespace META.GameWorld.Objects.Characters
 		public float jumpPower;
 
 		public Player(Vector2 _position)
-			: base(new Rectangle(10, -300, 100, 220), SpriteID.PlayerIdle, 350, DEFAULT_GRAVITY, new Rectangle(-50, -80, 210, 300))
+			: base(new Rectangle((int)_position.X, (int)_position.Y, 100, 220), SpriteID.PlayerIdle, 350, DEFAULT_GRAVITY, new Rectangle(-50, -80, 210, 300))
 		{
 			if (Main != null)
 				GameObjectManager.Objects.Remove(Main);
@@ -71,7 +71,7 @@ namespace META.GameWorld.Objects.Characters
 				Kill();
 			}
             if (GetCurrentAnimation() == Animations.Idle && StateMachineManager.CurrentState == State.Playing)
-                GameStats.totalIdleTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                GameStats.TotalIdleTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
 			if (Collision.PointToRectCollision(GameStats.LevelGoal, this.collisionBox))
 			{
@@ -101,10 +101,9 @@ namespace META.GameWorld.Objects.Characters
 			Reset();
 		}
 
-		public void Reset()
+		public override void Reset()
 		{
-			position = new Vector2(10, 10);
-			yVelocity = 0;
+            base.Reset();
 			SetAnimation(Animations.Idle);
 			GameStats.TotalLevelTime = 0;
 		}
@@ -140,5 +139,53 @@ namespace META.GameWorld.Objects.Characters
 		{
 			return (Animations)_currentAnimation;
 		}
+
+        public void ResolveEnemyCollision(Character enemy)
+        {
+            if (enemy == this || !enemy.active)
+                return;
+
+            Rectangle? collision = Collision.Rect(collisionBox, enemy.collisionBox);
+
+            if (collision == null)
+                return;
+
+            Rectangle rect = (Rectangle)collision;
+            if (rect.Width > rect.Height)	// Vertical Collision
+            {
+                if (rect.Y > Y)				// Character on top
+                {
+                    Bottom = enemy.Top;
+                    if (yVelocity > 0)
+                    {
+                        yVelocity = -jumpPower;
+                        enemy.active = false;
+                    }
+                    else
+                    {
+                        Kill();
+                    }
+                    isGrounded = true;
+
+                    if ((this is Player) && (Right - enemy.Left <= 1 || enemy.Right - Left <= 1))
+                        AchievementManager.Unlock(AchievementID.LifeOnTheEdge);
+                }
+                else if (rect.Height > 0)	// Character on bottom
+                {
+                    Kill();
+                }
+            }
+            else							// Horizontal Collision
+            {
+                Kill();
+            }
+        }
+        public override void ResolveAllCollisions()
+        {
+            base.ResolveAllCollisions();
+
+            foreach (Character c in GameObjectManager.Objects.OfType<Character>())
+                ResolveEnemyCollision(c);
+        }
 	}
 }

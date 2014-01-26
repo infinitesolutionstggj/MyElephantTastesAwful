@@ -90,7 +90,7 @@ namespace META.Engine.Achievements
 							new AchievementFamilyRegistration(AchievementID.OnePlayerGame, 30),
 							new AchievementFamilyRegistration(AchievementID.OneIsTheLoneliestNumber, 60),
 							new AchievementFamilyRegistration(AchievementID.AreYouStillThere, 300)
-						}, () => (int)(GameStats.totalIdleTime)),
+						}, () => (int)(GameStats.TotalIdleTime)),
 					new AchievementFamily(new List<AchievementFamilyRegistration>()
 						{
 							new AchievementFamilyRegistration(AchievementID.ItsABird, 1),
