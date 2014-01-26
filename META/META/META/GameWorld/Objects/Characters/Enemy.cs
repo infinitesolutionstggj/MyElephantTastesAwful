@@ -14,7 +14,7 @@ namespace META.GameWorld.Objects.Characters
 		public SoundEffect deathSound;
 
         public Enemy(Vector2 _position, SpriteID _sprite, SoundEffect _killSound, SoundEffect _deathSound, float _moveSpeed, float _gravity = DEFAULT_GRAVITY)
-            : base(_position, _sprite, _moveSpeed)
+            : base(_position, _sprite, _moveSpeed, _gravity)
         {
 			killSound = _killSound;
 			deathSound = _deathSound;

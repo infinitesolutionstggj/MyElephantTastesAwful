@@ -26,7 +26,7 @@ namespace META.GameWorld
 			SpikeList.Add(new Vector2(7003, 383));
 			SpikeList.Add(new Vector2(9600, 1080));
 			SpikeList.Add(new Vector2(7509, 767));
-			SpikeList.Add(new Vector2(8881, 871));
+			SpikeList.Add(new Vector2(9125, 871));
 		}
 
 		public static void Update(GameTime gameTime)

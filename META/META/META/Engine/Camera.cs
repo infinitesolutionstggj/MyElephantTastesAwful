@@ -38,7 +38,7 @@ namespace META.Engine
 			}
 				//Pan.X = Player.Main.position.X - SpriteBatch.GraphicsDevice.Viewport.Width * 0.25f;
 
-            Vector2 screenPos2 = WorldToScreenPoint(new Vector2(10150, 0)) - new Vector2(SpriteBatch.GraphicsDevice.Viewport.Width, 0);
+            Vector2 screenPos2 = WorldToScreenPoint(new Vector2(10240, 0)) - new Vector2(SpriteBatch.GraphicsDevice.Viewport.Width, 0);
             Pan.X = MathHelper.Clamp(Pan.X, 0, (int)ScreenToWorldPoint(screenPos2).X);
 		}
 

@@ -38,7 +38,24 @@ namespace META.Engine.GameObjects
 			Objects.Add(new GenericTestObstacle(new Rectangle(7325, 1016, 2571, 64)));
 			Objects.Add(new GenericTestObstacle(new Rectangle(5451, 457, 1491, 60)));
 
-			//Objects.Add(new )
+			Objects.Add(new Butterfly(new Vector2(1024, 650), 3));
+			Objects.Add(new Butterfly(new Vector2(3125, 200), 3));
+			Objects.Add(new Butterfly(new Vector2(3050, 780), 1.5f));
+			Objects.Add(new Butterfly(new Vector2(6300, 750), 2));
+
+			Objects.Add(new LimitedBoundsCrab(new Vector2(1500, 400), 1364, 1710));
+			Objects.Add(new LimitedBoundsCrab(new Vector2(3500, 500), 3316, 3782));
+			Objects.Add(new LimitedBoundsCrab(new Vector2(4150, 820), 2648, 3326));
+			Objects.Add(new LimitedBoundsCrab(new Vector2(6500, 800), 5282, 6878));
+			Objects.Add(new LimitedBoundsCrab(new Vector2(8525, 850), 7920, 8820));
+
+			Objects.Add(new Balloon(new Vector2(2350, 623)));
+			Objects.Add(new Balloon(new Vector2(2530, 450)));
+			Objects.Add(new Balloon(new Vector2(4150, 225)));
+			Objects.Add(new Balloon(new Vector2(4450, 325)));
+			Objects.Add(new Balloon(new Vector2(4750, 425)));
+			Objects.Add(new Balloon(new Vector2(8120, 250)));
+			Objects.Add(new Balloon(new Vector2(8500, 360)));
 		}
 
 		public static void Update(GameTime gameTime)

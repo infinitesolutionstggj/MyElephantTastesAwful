@@ -27,7 +27,7 @@ namespace META.GameWorld.Objects.Characters
 
 			if (position.X <= minXPosition)
 				direction = 1;
-			if (position.X >= maxXPosition)
+			if (position.X >= maxXPosition - Width)
 				direction = -1;
 		}
 
