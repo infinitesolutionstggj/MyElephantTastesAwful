@@ -94,6 +94,7 @@
     <Compile Include="GameWorld\Objects\Characters\Character.cs" />
     <Compile Include="GameWorld\Objects\Characters\Crab.cs" />
     <Compile Include="GameWorld\Objects\Characters\Enemy.cs" />
+    <Compile Include="GameWorld\Objects\Characters\LimitedBoundsCrab.cs" />
     <Compile Include="GameWorld\Objects\Characters\Player.cs" />
     <Compile Include="Engine\InputManager.cs" />
     <Compile Include="Engine\Sprites\Sprite.cs" />
